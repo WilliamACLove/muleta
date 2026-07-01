@@ -1,0 +1,468 @@
+version: 0.1.0
+entries:
+- term: accordingly
+  suggestions:
+  - so
+  source: PD
+- term: actionable
+  suggestions:
+  - usable
+  - practical
+  source: BUZZ
+- term: additional
+  suggestions:
+  - added
+  - more
+  source: PD
+- term: aforementioned
+  suggestions:
+  - this
+  - that
+  - these
+  source: PD
+- term: anticipate
+  suggestions:
+  - expect
+  source: PD
+- term: apprise
+  suggestions:
+  - tell
+  - inform
+  source: PD
+- term: ascertain
+  suggestions:
+  - find out
+  - learn
+  source: PD
+- term: bake in
+  suggestions:
+  - build in
+  - include
+  source: BUZZ
+- term: boil the ocean
+  suggestions:
+  - do too much
+  source: BUZZ
+- term: cadence
+  suggestions:
+  - rhythm
+  - schedule
+  source: BUZZ
+- term: champion
+  suggestions:
+  - support
+  - promote
+  source: GOVUK
+- term: circle back
+  suggestions:
+  - follow up
+  - return to
+  source: BUZZ
+- term: cognizant
+  suggestions:
+  - aware
+  source: PD
+- term: collaborate
+  suggestions:
+  - work with
+  source: GOVUK
+- term: combat
+  suggestions:
+  - fix
+  - reduce
+  source: GOVUK
+- term: commence
+  suggestions:
+  - begin
+  - start
+  source: PD
+- term: commensurate
+  suggestions:
+  - equal
+  - matching
+  source: PD
+- term: component
+  suggestions:
+  - part
+  source: PD
+- term: comprise
+  suggestions:
+  - form
+  - include
+  source: PD
+- term: deep dive
+  suggestions:
+  - examine
+  - study
+  source: BUZZ
+- term: delineate
+  suggestions:
+  - describe
+  - outline
+  source: PD
+- term: deliver
+  suggestions:
+  - make
+  - provide
+  - achieve
+  source: GOVUK
+- term: demonstrate
+  suggestions:
+  - show
+  - prove
+  source: PD
+- term: deploy
+  suggestions:
+  - use
+  - put in place
+  source: GOVUK
+- term: dialogue
+  suggestions:
+  - talk
+  - discussion
+  source: GOVUK
+- term: disseminate
+  suggestions:
+  - send
+  - give
+  - issue
+  source: PD
+- term: double click
+  suggestions:
+  - look closer
+  - focus
+  source: BUZZ
+- term: drive
+  suggestions:
+  - cause
+  - encourage
+  source: GOVUK
+- term: ducks in a row
+  suggestions:
+  - get organized
+  source: BUZZ
+- term: efficacious
+  suggestions:
+  - effective
+  source: PD
+- term: elucidate
+  suggestions:
+  - explain
+  source: PD
+- term: embed
+  suggestions:
+  - set up
+  - fix
+  source: GOVUK
+- term: endeavor
+  suggestions:
+  - try
+  source: PD
+- term: eventuate
+  suggestions:
+  - result
+  - happen
+  source: PD
+- term: exigent
+  suggestions:
+  - urgent
+  source: PD
+- term: expedite
+  suggestions:
+  - speed up
+  - hasten
+  source: PD
+- term: expeditious
+  suggestions:
+  - fast
+  - quick
+  source: PD
+- term: expend
+  suggestions:
+  - spend
+  source: PD
+- term: facilitate
+  suggestions:
+  - help
+  - ease
+  source: PD
+- term: finalize
+  suggestions:
+  - finish
+  - complete
+  source: PD
+- term: forthwith
+  suggestions:
+  - now
+  - at once
+  source: PD
+- term: foster
+  suggestions:
+  - encourage
+  - help
+  source: GOVUK
+- term: furnish
+  suggestions:
+  - give
+  - send
+  source: PD
+- term: game changer
+  suggestions:
+  - big improvement
+  source: BUZZ
+- term: granularity
+  suggestions:
+  - detail
+  source: BUZZ
+- term: headwinds
+  suggestions:
+  - challenges
+  source: BUZZ
+- term: henceforth
+  suggestions:
+  - from now on
+  source: PD
+- term: heretofore
+  suggestions:
+  - until now
+  source: PD
+- term: implement
+  suggestions:
+  - carry out
+  - start
+  source: PD
+- term: in lieu of
+  suggestions:
+  - instead of
+  source: PD
+- term: in the event that
+  suggestions:
+  - if
+  source: PD
+- term: in the weeds
+  suggestions:
+  - bogged down
+  source: BUZZ
+- term: inasmuch as
+  suggestions:
+  - since
+  source: PD
+- term: indicate
+  suggestions:
+  - show
+  - say
+  source: PD
+- term: initiate
+  suggestions:
+  - start
+  - begin
+  source: PD
+- term: key
+  suggestions:
+  - important
+  source: GOVUK
+- term: learnings
+  suggestions:
+  - lessons
+  source: BUZZ
+- term: level up
+  suggestions:
+  - improve
+  source: BUZZ
+- term: liaise
+  suggestions:
+  - work with
+  source: GOVUK
+- term: methodology
+  suggestions:
+  - method
+  source: PD
+- term: monetary
+  suggestions:
+  - money
+  source: PD
+- term: move the needle
+  suggestions:
+  - make a difference
+  source: BUZZ
+- term: necessitate
+  suggestions:
+  - cause
+  - need
+  source: PD
+- term: north star
+  suggestions:
+  - main goal
+  source: BUZZ
+- term: notwithstanding
+  suggestions:
+  - despite
+  - still
+  source: PD
+- term: numerous
+  suggestions:
+  - many
+  source: PD
+- term: obtain
+  suggestions:
+  - get
+  source: PD
+- term: one-stop shop
+  suggestions:
+  - service
+  - website
+  source: GOVUK
+- term: optics
+  suggestions:
+  - appearance
+  - perception
+  source: BUZZ
+- term: optimum
+  suggestions:
+  - best
+  source: PD
+- term: parameters
+  suggestions:
+  - limits
+  - boundaries
+  source: PD
+- term: per my last email
+  suggestions:
+  - as I said
+  source: BUZZ
+- term: peruse
+  suggestions:
+  - read
+  source: PD
+- term: predicate
+  suggestions:
+  - base
+  source: PD
+- term: predicated on
+  suggestions:
+  - based on
+  source: PD
+- term: prioritize
+  suggestions:
+  - rank
+  source: PD
+- term: procure
+  suggestions:
+  - buy
+  - get
+  source: PD
+- term: progress
+  suggestions:
+  - develop
+  - work on
+  source: GOVUK
+- term: promulgate
+  suggestions:
+  - issue
+  - publish
+  source: PD
+- term: pursuant to
+  suggestions:
+  - under
+  - following
+  source: PD
+- term: put a pin in it
+  suggestions:
+  - pause
+  - revisit later
+  source: BUZZ
+- term: quick win
+  suggestions:
+  - easy result
+  source: BUZZ
+- term: remuneration
+  suggestions:
+  - pay
+  source: PD
+- term: requisite
+  suggestions:
+  - required
+  - needed
+  source: PD
+- term: run it up the flagpole
+  suggestions:
+  - test the idea
+  source: BUZZ
+- term: single source of truth
+  suggestions:
+  - one reliable record
+  source: BUZZ
+- term: slim down
+  suggestions:
+  - reduce
+  source: GOVUK
+- term: subsequent
+  suggestions:
+  - later
+  - next
+  source: PD
+- term: sufficient
+  suggestions:
+  - enough
+  source: PD
+- term: swim lane
+  suggestions:
+  - area of responsibility
+  source: BUZZ
+- term: table this
+  suggestions:
+  - postpone
+  source: BUZZ
+- term: tackle
+  suggestions:
+  - deal with
+  - solve
+  source: GOVUK
+- term: take offline
+  suggestions:
+  - discuss separately
+  source: BUZZ
+- term: terminate
+  suggestions:
+  - end
+  - stop
+  source: PD
+- term: thereafter
+  suggestions:
+  - then
+  - after that
+  source: PD
+- term: therein
+  suggestions:
+  - there
+  source: PD
+- term: transform
+  suggestions:
+  - change
+  source: GOVUK
+- term: unpack
+  suggestions:
+  - explain
+  - examine
+  source: BUZZ
+- term: utilization
+  suggestions:
+  - use
+  source: PD
+- term: value-add
+  suggestions:
+  - benefit
+  source: BUZZ
+- term: wheelhouse
+  suggestions:
+  - area of expertise
+  source: BUZZ
+- term: whereas
+  suggestions:
+  - because
+  - since
+  source: PD
+- term: whilst
+  suggestions:
+  - while
+  source: PD

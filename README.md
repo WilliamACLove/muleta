@@ -41,10 +41,30 @@ Register the server with any MCP client (Claude Desktop, Claude Code, etc.):
 
 | Tool | Purpose |
 |------|---------|
-| `score_text(text)` | Full report: Bull Composite, Bull Index (BI + raw), raw + adjusted Flesch, hits, versions |
-| `find_jargon(text)` | Just the jargon hits, with Bull weight (1–10) and offsets |
-| `corpus_list()` | List every corpus term with weight and provenance |
-| `corpus_add(term, weight, source, note)` | Add a term (weight 1–10) to the corpus (persisted) |
+| `score_text(text)` | Full report: Bull Composite, Bull Index (BI + raw), raw + adjusted Flesch, hits + replacements, versions |
+| `find_jargon(text)` | Just the jargon hits, with Bull weight (1–10), offsets, and replacements |
+| `analyze(text)` | Score + hits + watchlist candidates, and asks the client LLM to propose any *new* jargon |
+| `scan_candidates(text)` | Deterministically flag suspected jargon **not yet in the corpus** (from the watchlist) |
+| `propose_term(term, example, reason)` | Propose a new term → human-review queue (never auto-scored) |
+| `review_queue()` | List proposed terms awaiting approval, with how often each was proposed |
+| `approve_term(term, weight, note)` | Human-in-the-loop: promote a pending term into the scored corpus |
+| `usage_stats()` | Local-only stats: which jargon shows up most across the docs you've scored |
+| `corpus_list()` / `corpus_add(...)` | List / directly add corpus terms |
+
+### The self-improving loop
+
+1. `analyze(text)` returns the deterministic score, the known jargon hits, and **watchlist
+   candidates** — suspected jargon not yet in the scored corpus (compiled from
+   plainlanguage.gov, GOV.UK, and business-press buzzword lists).
+2. The **client's own model** reads the text for any *further* jargon and calls
+   `propose_term`. Proposals land in a human-review queue — never scored automatically.
+3. You `approve_term` the good ones; they enter the corpus (with provenance) and start
+   being scored.
+4. `usage_stats` shows which terms dominate *your* writing and how often pending
+   candidates appear — the evidence for what to add next.
+
+**Usage logging** is on by default and **local-only** (a JSONL file under `~/.muleta/`,
+never transmitted). Disable it with `MULETA_NO_USAGE=1`.
 
 ## Use as a CLI
 
