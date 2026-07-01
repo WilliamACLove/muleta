@@ -11,7 +11,8 @@ A deterministic engine is the source of truth: it computes the **Bull Composite 
 **Adjusted Flesch** reading-ease score. The calling LLM does the explaining and rewriting,
 grounded on those real numbers.
 
-> The dictionary (113 headwords) and the scoring formula were recovered from the shipped
+> The dictionary (135 lemmas, with exact Bull weights, surface forms, and the original
+> plain-language replacements) and the scoring formula were recovered from the shipped
 > Bullfighter 1.2 installer and the vendor's scorecard. See `docs/recovery-notes.md` and
 > `PROVENANCE.md`. The words are individually uncopyrightable and are compiled here
 > independently, with provenance cited.
@@ -76,7 +77,9 @@ drift silently.
 
 `data/jargon.yaml` is versioned, carries provenance per term (`extracted` /
 `reconstructed` / `user` / `llm-suggested`), and its version is stamped into every score
-(`corpus_version`) so results are reproducible.
+(`corpus_version`) so results are reproducible. Each entry carries its Bull weight, surface
+`forms`, plain-language `suggestions`, and the original `comment` (diagnosis). Rebuild it
+from the recovered database with `tools/build_corpus_from_mdb.py` (`pip install -e ".[tools]"`).
 
 ## Develop
 

@@ -39,12 +39,15 @@ from primary sources. Muleta ships as a faithful restoration, not a reconstructi
 
 Source: `http://web.archive.org/web/20090625004413/http://www.fightthebull.com:80/bullscorecard.asp`
 
-## Open follow-ups
+## Clean read (resolved)
 
-- **Exact per-word weights** and **clean replacement suggestions** require reading the
-  `.mdb` proper (Jet, password-handled — e.g., mdbtools). Current weights are tier-assigned
-  (anchored to the confirmed global=1 / leverage=high / envisioneer=10) and replacements
-  are omitted rather than shipped corrupted.
+The `.mdb` reads cleanly with **`access-parser`** (pure Python) — the data pages are not
+encrypted, only the Access UI password is set. This yielded the full table
+`bull_kuzu_warshawsky_1` (356 rows): `weight` (exact 1–10), `ownerword` (lemma),
+`bullword` (surface form), `suggestions`, `comments`. Corpus **1.1.0** is built directly
+from it (135 lemmas, exact weights, explicit forms, clean replacements, and the original
+diagnosis comments) via `tools/build_corpus_from_mdb.py`. The earlier tier-assigned
+weights and the lossy plaintext replacements are superseded.
 
 ## What is NOT redistributed
 

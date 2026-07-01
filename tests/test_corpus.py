@@ -5,9 +5,9 @@ from muleta.corpus import Corpus, CorpusError
 
 def test_load_authentic_corpus():
     c = Corpus.load()
-    assert c.version == "1.0.0"
+    assert c.version == "1.1.0"
     assert "leverage" in c.terms()
-    assert len(c.entries()) >= 100  # ~113 authentic headwords
+    assert len(c.entries()) >= 120  # ~135 authentic lemmas
 
 
 def test_weight_anchors():
@@ -15,6 +15,14 @@ def test_weight_anchors():
     assert c.weight("global") == 1  # abused real word
     assert c.weight("leverage") == 8
     assert c.weight("envisioneer") == 10  # worst coinage
+    assert c.weight("synergy") == 10
+
+
+def test_forms_and_suggestions_present():
+    c = Corpus.load()
+    lev = next(e for e in c.entries() if e.term == "leverage")
+    assert "leveraged" in lev.surfaces()
+    assert "use" in lev.suggestions
 
 
 def test_weight_case_insensitive():

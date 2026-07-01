@@ -4,7 +4,7 @@ from muleta.report import Report, score
 def test_score_all_fields():
     r = score("We must leverage synergy to win.")
     assert isinstance(r, Report)
-    assert r.corpus_version == "1.0.0"
+    assert r.corpus_version == "1.1.0"
     assert r.formula_version == "bfc-v2"
     assert r.word_count == 6
     assert any(h.term == "leverage" for h in r.hits)

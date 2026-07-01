@@ -9,7 +9,7 @@ SAMPLES = Path(__file__).parent / "samples"
 # Locked literals — authentic Bullfighter scoring (bfc-v2) + corpus 1.0.0. If the
 # engine or corpus changes intentionally, update these in the same commit (never silently).
 EXPECTED = {
-    "jargon_heavy": {"composite": 5.5, "bull_index_raw": 84.5, "hit_terms": {"leverage", "synergy", "bandwidth", "value add"}},
+    "jargon_heavy": {"composite": 5.4, "bull_index_raw": 83.5, "hit_terms": {"leverage", "synergy", "bandwidth", "value add"}},
     "clean": {"composite": 9.9, "bull_index_raw": 100.0, "hit_terms": set()},
 }
 

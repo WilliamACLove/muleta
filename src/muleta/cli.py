@@ -28,7 +28,9 @@ def _render(r):
     ]
     if r.hits:
         lines.append("Jargon:")
-        lines += [f"  - {h.term} (weight {h.weight}) @ {h.start}" for h in r.hits]
+        for h in r.hits:
+            tip = f"  ->  {', '.join(h.suggestions[:3])}" if h.suggestions else ""
+            lines.append(f"  - {h.term} (weight {h.weight}) @ {h.start}{tip}")
     else:
         lines.append("No jargon found.")
     return "\n".join(lines)

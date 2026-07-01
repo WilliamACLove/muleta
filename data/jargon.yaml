@@ -1,459 +1,1423 @@
-# Muleta jargon corpus — authentic Bullfighter dictionary (113 headwords).
-# Recovered from the shipped Bullfighter 1.2 installer (Wayback Machine). Words are
-# individually uncopyrightable (37 CFR 202.1; Feist); independently compiled here with
-# our own tiered weights. See PROVENANCE.md and docs/recovery-notes.md.
-# weight = Bull weight Bi, 1 (abused real word) .. 10 (worst coinage).
-version: "1.0.0"
+version: 1.1.0
 entries:
-  - term: accelerator
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: action item
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: agile
-    weight: 2
-    source: extracted
-    added: "2026-07-01"
-  - term: align
-    weight: 2
-    source: extracted
-    added: "2026-07-01"
-  - term: alignment
-    weight: 2
-    source: extracted
-    added: "2026-07-01"
-  - term: architect
-    weight: 2
-    source: extracted
-    added: "2026-07-01"
-  - term: bandwidth
-    weight: 8
-    source: extracted
-    added: "2026-07-01"
-  - term: benchmark
-    weight: 2
-    source: extracted
-    added: "2026-07-01"
-  - term: best in class
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: best of breed
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: best practice
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: bleeding edge
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: bricks and clicks
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: buy-in
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: capability transfer
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: center of excellence
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: change agent
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: clicks and mortar
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: client focus
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: close the loop
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: core competency
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: critical path
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: cutting edge
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: deliverable
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: disintermediate
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: drill down
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: drink from a fire hydrant
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: e-business
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: ecosystem
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: empower
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: end to end
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: enterprise
-    weight: 2
-    source: extracted
-    added: "2026-07-01"
-  - term: envisioneer
-    weight: 10
-    source: extracted
-    added: "2026-07-01"
-  - term: fast track
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: fire on all cylinders
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: first-mover
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: full plate
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: future proof
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: game plan
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: global
-    weight: 1
-    source: extracted
-    added: "2026-07-01"
-  - term: going forward
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: granular
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: guesstimate
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: holistic
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: incentivise
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: incentivize
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: infomediary
-    weight: 10
-    source: extracted
-    added: "2026-07-01"
-  - term: inoculate
-    weight: 5
-    source: extracted
-    added: "2026-07-01"
-  - term: knowledge base
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: knowledge capital
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: leading edge
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: leverage
-    weight: 8
-    source: extracted
-    added: "2026-07-01"
-  - term: low-hanging fruit
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: mindshare
-    weight: 8
-    source: extracted
-    added: "2026-07-01"
-  - term: mission-critical
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: monetise
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: monetize
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: non value-add
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: octel
-    weight: 10
-    source: extracted
-    added: "2026-07-01"
-  - term: offline
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: offload
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: operationalise
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: operationalize
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: out of pocket
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: out of the box
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: out of the loop
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: paradigm
-    weight: 8
-    source: extracted
-    added: "2026-07-01"
-  - term: paradigm shift
-    weight: 8
-    source: extracted
-    added: "2026-07-01"
-  - term: parking lot
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: phase contain
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: ping
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: productise
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: productize
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: pure play
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: quality-driven
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: radar
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: reach out
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: reengineer
-    weight: 8
-    source: extracted
-    added: "2026-07-01"
-  - term: reinvent the wheel
-    weight: 8
-    source: extracted
-    added: "2026-07-01"
-  - term: repository
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: repurpose
-    weight: 8
-    source: extracted
-    added: "2026-07-01"
-  - term: scalable
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: seamless
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: shelfware
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: socialise
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: socialize
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: soup to nuts
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: stakeholder
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: strategise
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: strategize
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: straw man
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: synch-up
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: synergistic
-    weight: 8
-    source: extracted
-    added: "2026-07-01"
-  - term: synergize
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: synergy
-    weight: 8
-    source: extracted
-    added: "2026-07-01"
-  - term: thought leader
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: thoughtware
-    weight: 10
-    source: extracted
-    added: "2026-07-01"
-  - term: touch base
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: touch point
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: transformation
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: transparent
-    weight: 3
-    source: extracted
-    added: "2026-07-01"
-  - term: unleash
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: utilise
-    weight: 5
-    source: extracted
-    added: "2026-07-01"
-  - term: utilize
-    weight: 5
-    source: extracted
-    added: "2026-07-01"
-  - term: value add
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: value proposition
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: value-capturing
-    weight: 9
-    source: extracted
-    added: "2026-07-01"
-  - term: vortal
-    weight: 10
-    source: extracted
-    added: "2026-07-01"
-  - term: walk the talk
-    weight: 7
-    source: extracted
-    added: "2026-07-01"
-  - term: walk the walk
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: whiteboard
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: wordsmith
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
-  - term: world class
-    weight: 6
-    source: extracted
-    added: "2026-07-01"
+- term: accelerator
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - accelerators
+  suggestions:
+  - tool
+  - tools
+  comment: A great brochure word. Suitable also for reference to the right-most pedal in an automobile.
+- term: action item
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - action items
+  suggestions:
+  - task
+  - tasks
+  comment: Action makes it more exciting, but if you're serious about that hyperbole-reduction diet, you better make this your first action item - er, task.
+- term: agile
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - agility
+  comment: At least it's a newer cliche. You could have really killed your Bull score with one that was even worse. Okay, enough encouragement. Delete it.
+- term: align
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - aligned
+  - aligning
+  - alignments
+  - aligns
+  comment: A real word, but often used as a vague reference to some poorly defined activities. A notorious target for abuse by consultants. Straight talk means specific.
+- term: alignment
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  comment: Usually refers to automotive suspension, adjustment, or other tangible things. If you're using it with modifiers such as 'cultural' or 'leadership', you're probably well into b.s. territory.
+- term: architect
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - architected
+  - architecting
+  - architects
+  suggestions:
+  - build
+  - design
+  - builds
+  - designs
+  - built
+  - designed
+  - building
+  - designing
+  comment: Fine as a noun. Not one of the prettier consulting expressions, if you're trying to slip this one in as a verb.
+- term: bandwidth
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - bandwidths
+  suggestions:
+  - capacity
+  - time
+  - resources
+  - capacities
+  comment: 'Your life has come to this: you are a passive conduit for everything, kind of like a fiber optic cable. Another term that has a hint of the late 1990s tech mania.'
+- term: benchmark
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - benchmarks
+  suggestions:
+  - reference point
+  - reference points
+  comment: An overused word, often misused to hype something. Especially bad when used as a verb. But we'll only penalize you for using a noun. So don't write or call us, we're already being nice to you.
+- term: best in class
+  weight: 6
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - best-in-class
+  suggestions:
+  - best
+  comment: Appropriate for the kennel club. In consulting discourse, a tired expression that means nothing.
+- term: best of breed
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - best-of-breed
+  suggestions:
+  - best
+  comment: It would be best to get your mind off breeding for a few minutes. You'll have better focus on your work.
+- term: best practice
+  weight: 1
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - best practices
+  comment: Cliche, with a hint of arrogance and a dash of pompousness. Use it sparingly. A minor bull foul.
+- term: bleeding edge
+  weight: 3
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - bleeding-edge
+  suggestions:
+  - innovative
+  - new
+  comment: Once a real grabber of a phrase, now it's a great way to say that you've been around the consulting world for a while. And you haven't learned any new phrases.
+- term: blocking and tackling
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  comment: An excellent expression, if you're writing about American football. Or were watching it while you were writing this document or presentation.
+- term: brain dump
+  weight: 4
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - brain dumps
+  suggestions:
+  - morgue
+  - landfill
+  - morgues
+  - landfills
+- term: bricks and clicks
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - bricks-and-clicks
+  comment: You sound very '90s. There was nothing wrong with this -- in the 1990s. Moderate bull foul.
+- term: buy-in
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - buys into
+  suggestions:
+  - acceptance
+  - accepts
+  comment: 'Use sparingly: a hackneyed expression that has lost its true meaning.'
+- term: capability transfer
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - education
+  - training
+  - debriefing
+  comment: Kind of a stiff consulting term. This could hurt your score. Change it and Bullfighter will like you more.
+- term: center of excellence
+  weight: 1
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - centers of excellence
+  suggestions:
+  - vortex of incomparable splendor
+  - vortexes of incomparable splendor
+  comment: Almost ludicrous in its hype. But whatever you're writing about probably already has this unfortunate name. So, seeing as it probably wasn't your fault, we'll let you go with a warning.
+- term: centre of excellence
+  weight: 1
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - centres of excellence
+  suggestions:
+  - vortex of incomparable splendor
+  - vortexes of incomparable splendor
+  comment: Almost ludicrous in its hype. But whatever you're writing about probably already has this unfortunate name. So, seeing as it probably wasn't your fault, we'll let you go with a warning.
+- term: quality-driven
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - quality driven
+  comment: Good Lord, man. What's the opposite? Delete this immediately before anyone sees it. And write a note to the good people who wrote Bullfighter thanking them for bringing you back from the edge.
+- term: radar
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - radar screen
+  comment: RADAR is essential for tracking aircraft and other large, moving objects. For all of its sophistication, however, it cannot warn you of incoming cliches.
+- term: reach out
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - reached out
+  - reaches out
+  - reaching out
+  suggestions:
+  - inquire
+  - ask
+  - survey
+  - inquired
+  - asked
+  - surveyed
+  - inquires
+  - asks
+  - surveys
+  - inquiring
+  - asking
+  - surveying
+  comment: A common expression, but overly dramatic and sentimental. Bullfighter won't gore you for this one, but it's not exactly straight talk.
+- term: reengineer
+  weight: 3
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - re-engineer
+  - re-engineered
+  - re-engineering
+  - re-engineers
+  - reengineered
+  - reengineering
+  - reengineers
+  suggestions:
+  - improve
+  - automate
+  - rationalize
+  - improved
+  - automated
+  - rationalized
+  - improving
+  - automating
+  - rationalizing
+  - improves
+  - automates
+  - rationalizes
+  comment: One of those expensive words that we abuse for its grandiosity. Can you be more specific? Your reader will thank you.
+- term: reinvent the wheel
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - reinvented the wheel
+  - reinventing the wheel
+  - reinvents the wheel
+  comment: Beyond a doubt the most tired cliche in the entire Bullfighter dictionary. Congratulations! Now delete it or face the consequences.
+- term: repository
+  weight: 3
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - repositories
+  suggestions:
+  - libraries
+  - archives
+  - library
+  - archive
+  comment: Real English word often corrupted by consultants to glorify any place that something is stored -- probably because it sounds like a prestigious bank term. It even sounds expensive.
+- term: repurpose
+  weight: 4
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - re-purpose
+  - re-purposed
+  - re-purposes
+  - re-purposing
+  - repurposed
+  - repurposes
+  - repurposing
+  suggestions:
+  - reuse
+  - use
+  - reused
+  - used
+  - reuses
+  - uses
+  - reusing
+  - using
+  comment: Another abused consulting verb, implying that we can leverage a pre-existing repository of knowledge capital to create a value-add - wait, now you've got us doing it. Straight talkers prefer verbs like 'use'.
+- term: results-driven
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  comment: What's the opposite? Delete it. As an added bonus, your Flesch Readability score will improve. And you'll be able to read your document aloud without having non-consultants fall onto the floor with laughter. What else could you ask for?
+- term: scalable
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - scalability
+  - scaleable
+  comment: Overused, often gratuitous term.
+- term: scope creep
+  weight: 6
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - extra work
+  comment: Sounds normal to consultants. Sounds strange to normal people. Who's paying the bills?
+- term: seamless
+  weight: 4
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - seamlessly
+  comment: Hyperbole like this won't help your Bull Index score. And ... no one buys it anyway. Drop the hyperbole and back away from the document slowly.
+- term: shelfware
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - unused software
+  comment: Very geekish, but if your clients want a geek, go for it.
+- term: change agent
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - change agents
+  suggestions:
+  - messiah
+  - messenger
+  - influencer
+  - messiahs
+  - messengers
+  - influencers
+  comment: What's so compelling about sounding like a chemist?
+- term: clicks and mortar
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - clicks-and-mortar
+  comment: You sound very '90s. There was nothing wrong with that -- in the 1990s. Moderate bull foul.
+- term: client focus
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - client-focused
+  - client-focussed
+  comment: Ever notice how saying 'I love you' one hundred times a day means less than sending an unexpected bunch of flowers once a week? It's the same thing with your clients. Saying 'client-focused' endlessly doesn't make your client feel like the focus of anything. It does provide the Bullfighter authors with another cliche, though.
+- term: close the loop
+  weight: 4
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - closed the loop
+  - closes the loop
+  - closing the loop
+  comment: Stay away from these vague loop expressions. They imply futility.
+- term: convergence
+  weight: 1
+  source: extracted
+  added: '2026-07-01'
+  comment: A real word, so no harsh penalty here. Some people, without your excellent sense of restraint, have abused this word as a grandiose-sounding consulting concept. Not that you would do that, obviously. But other people can't always be trusted.
+- term: core competency
+  weight: 4
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - core competencies
+  suggestions:
+  - strengths
+  - strength
+  comment: Normal people don't write like this. Bullfighter isn't happy. Wanna change it?
+- term: critical path
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  comment: Is it really?  A lot of people call a lot of things critical path. Not everything can really be critical path. Think about it.
+- term: cutting edge
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - cutting-edge
+  suggestions:
+  - new
+  - forward-thinking
+  comment: Remember how 'space-age' used to sound really progressive? Cutting edge is the next 'space age'.
+- term: deck
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - presentation
+  comment: Shockingly, PowerPoint slides aren't the only way to present something.
+- term: deliverable
+  weight: 4
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - deliverables
+  suggestions:
+  - document
+  - software
+  - program
+  - documents
+  - programs
+  comment: Try using this word outside the office. It sounds like a euphemism for something too difficult to describe, and normal people won't get it.
+- term: disintermediate
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - disintermediated
+  - disintermediates
+  - disintermediating
+  comment: Excellent Scrabble game word. Put this baby on a triple word score and you're home free. Oh wait, this isn't Scrabble.
+- term: drill down
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - drilled down
+  - drilling down
+  - drills down
+  comment: A clunky consulting metaphor. Unless you're discussing oil exploration or dentistry, there's a better way to say it. Your English teacher would curse your name. We could email her, you know.
+- term: drink from a fire hydrant
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - drank from a fire hydrant
+  - drinking from a fire hydrant
+  - drinks from a fire hydrant
+  suggestions:
+  - did too much
+  - do too much
+  - doing too much
+  comment: Nothing loses a reader's attention faster than a stupid graphic metaphor. Worse still, someone might try it and sue you.
+- term: e-business
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - ebusiness
+  suggestions:
+  - business
+  comment: The ultimate '90s term that died overnight. Bullfighter is very displeased. If you only make one stinking edit to your entire document, we recommend that this is it.
+- term: ecosystem
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - ecosystems
+  suggestions:
+  - system
+  - systems
+  comment: Frogs, bugs, fungi and so on. If you're not writing for National Geographic, you're probably not writing about an ecosystem. A dated term to be avoided. Moderate bull foul. If you are writing for National Geographic, we apologize. We enjoy the pictures.
+- term: empower
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - empowered
+  - empowering
+  - empowerment
+  - empowers
+  suggestions:
+  - enable
+  - enables
+  - enabling
+  - enablement
+  comment: A grandiose term. There's a difference between providing capability and giving permission, but the bigger issue is that 'empower' is solidly enshrined in the Consulting Cliche Hall of Fame.
+- term: end to end
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - end-to-end
+  suggestions:
+  - complete
+  - comprehensive
+  comment: A rising cliche. Be trendy and avoid it before everyone else does.
+- term: enterprise
+  weight: 1
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - enterprises
+  suggestions:
+  - company
+  - organization
+  - companies
+  - organizations
+  comment: 'Often overused: a grandiose word that isn''t very specific.'
+- term: envisioneer
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - envisioneered
+  - envisioneering
+  - envisioneers
+  suggestions:
+  - envision
+  - envisions
+  - envisioned
+  - envisioning
+  comment: Yeah. You adventurer, you. You could almost be a thought leader. But that would really get Bullfighter in a tantrum.
+- term: extensible
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  comment: You don't really know what this means. We don't really either.
+- term: fast track
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  comment: Sounds like advertising hype. If you want a verb, try expedite. Not a serious bull foul, but not Shakespeare by a long shot.
+- term: fire on all cylinders
+  weight: 1
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - fired on all cylinders
+  - fires on all cylinders
+  - firing on all cylinders
+  suggestions:
+  - function fully
+  - work perfectly
+  - functioned fully
+  - worked perfectly
+  - functions fully
+  - works perfectly
+  - fully functioning
+  comment: A colorful phrase from the automotive world. Useful especially when working with mechanics or on motorsports projects. Otherwise, an overly-conspicuous metaphor.
+- term: first-mover
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - first mover
+  comment: A battle cry from the first Internet boom and bust, one with little remaining credibility.
+- term: frictionless
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - effective
+  comment: We know you're good, possibly damned good. But 'frictionless' is optimistic.
+- term: full plate
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - a lot to do
+  - much to do
+  comment: Enough with the food. Your clients won't be impressed that you view their important project as a heaping plate of carbo-loaded pasta.
+- term: future proof
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - future proofed
+  - future proofing
+  - future proofs
+  - future-proof
+  - future-proofed
+  - future-proofing
+  - future-proofs
+  comment: Okay, enough. Stonehenge, the Parthenon and the Great Pyramids won't be obsolete for eons. Any software solution you implement will be obsolete even before, well, Bullfighter.
+- term: game plan
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - game plans
+  - gameplan
+  - gameplans
+  suggestions:
+  - plan
+  comment: 'Put away the shoulder and knee pads and face it: you''re not a professional athlete. The misguided ''game'' reference is a euphemism for ''expensive business deal.'''
+- term: global
+  weight: 1
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - globally
+  suggestions:
+  - worldwide
+  comment: Overused. Globally.
+- term: going forward
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - going-forward
+  comment: Your best option. Time-travel into the past isn't reliable enough yet. Trust us. Or we would have sent you back to grade school English class.
+- term: go-live
+  weight: 3
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - launch
+  comment: More consultant-speak that sounds like either a leftover disco-era expression or a feeble attempt to add drama to something dull.
+- term: granular
+  weight: 4
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - fundamental
+  - basic
+  comment: A real word, but notoriously misused by consultants going for that oh-so-scientific sound.
+- term: guesstimate
+  weight: 6
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - guesstimated
+  - guesstimates
+  - guesstimating
+  suggestions:
+  - guess
+  - guessed
+  - guesses
+  - guessing
+  comment: After all, it is just a guess. A guess that took too much effort, maybe, but a guess nonetheless.
+- term: holistic
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - holistically
+  suggestions:
+  - complete
+  - comprehensive
+  - extensive
+  - broad
+  comment: Unless you're addressing the feng shui and spiritual aspects of your client's problem, you're probably not taking a holistic approach.
+- term: impactful
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - meaningful
+  - noteworthy
+  - effective
+  comment: Authentic consultants know how to consult the dictionary. And they know that impactful' isn't in the dictionary. The good news is that there are a dozen more descriptive words available for your use at no extra charge.
+- term: incentivise
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - incentivised
+  - incentivises
+  - incentivising
+  suggestions:
+  - incent
+  - encourage
+  - promote
+  - incents
+  - encourages
+  - promotes
+  - incented
+  - encouraged
+  - promoted
+  - incenting
+  - encouraging
+  - promoting
+  comment: Egregious consulting jargon, maybe the worst word in this dictionary. Congratulations, you're a serious consultant. Other consultants will admire your powerful grasp of terms like 'incentivise'. Your clients will probably nod and flee.
+- term: incentivize
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - incentivized
+  - incentivizes
+  - incentivizing
+  suggestions:
+  - incent
+  - encourage
+  - promote
+  - incents
+  - encourages
+  - promotes
+  - incented
+  - encouraged
+  - promoted
+  - incenting
+  - encouraging
+  - promoting
+  comment: Egregious consulting jargon, maybe the worst word in this dictionary. Congratulations, you're a serious consultant. Other consultants will admire your powerful grasp of terms like 'incentivize'. Your clients will probably nod and flee.
+- term: infomediary
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - infomediaries
+  comment: So you like baiting Bullfighter? You think this is a game. Go ahead, see what kind of a score you get for using words like infomediary.
+- term: inoculate
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - inoculated
+  - inoculates
+  - inoculating
+  comment: The disease metaphor doesn't work unless you intend to discuss, for example, diseases. In this case, best to simply say what you mean.
+- term: knowledge base
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - knowledge bases
+  suggestions:
+  - knowledge
+  comment: 'Another technology-hybrid term that ends up sounding like hype, and confuses the reader: Is it a database or our knowledge?'
+- term: knowledge capital
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - knowledge
+  comment: Karl Marx is rolling over in his grave. How can you take something so pure (knowledge) and infect it with such dirty connotations as money and greed?
+- term: knowledge transfer
+  weight: 6
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - debriefing
+  - training
+  comment: It's a strained metaphor that describes knowledge as something that sits in a container somewhere so it can be moved around like gold bars from one bank to another. It sounds very abstract and not very authentic.
+- term: leading edge
+  weight: 3
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - leading-edge
+  suggestions:
+  - innovative
+  - new
+  comment: The really good news here is that you didn't use 'cutting edge' or 'bleeding edge'. Then Bullfighter might have shut down your PC and sent a note to your English teacher. And that's really the only good news here.
+- term: leverage
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - leveraged
+  - leverages
+  - leveraging
+  suggestions:
+  - use
+  - reuse
+  - uses
+  - reuses
+  - used
+  - reused
+  - using
+  - reusing
+  comment: This is like using 'utilize' when you mean to say 'use'. Save the syllables - you'll need them to salvage what's left of your Flesch Readability score.
+- term: low-hanging fruit
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - low hanging fruit
+  suggestions:
+  - easy tasks
+  - early opportunities
+  comment: Fruit is supposed to be good for you, but cliches are not. Avoid them like the plague.
+- term: mindshare
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - mind share
+  suggestions:
+  - awareness
+  comment: Refers to one unit of knowledge capital, preferred or common, which will pay dividends at the next annual meeting.
+- term: mission-critical
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - mission critical
+  suggestions:
+  - essential
+  - important
+  - key
+  comment: Look, Mr. Bond. We hate to interrupt your moment of intrigue and espionage, but put the pistol and the secret decoder ring away and write something realistic.
+- term: monetise
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - monetised
+  - monetises
+  - monetising
+  suggestions:
+  - coin into money
+  - coined into money
+  - coins into money
+  - coining into money
+  comment: A real (albeit rare) word, often misused. Appropriate for minting and coining facilities, such as the Royal Canadian Mint, etc.
+- term: monetize
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - monetized
+  - monetizes
+  - monetizing
+  suggestions:
+  - coin into money
+  - coined into money
+  - coins into money
+  - coining into money
+  comment: A real (albeit rare) word, often misused. Appropriate for minting and coining facilities, such as the Royal Canadian Mint, etc.
+- term: non value-add
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - non value-added
+  - non-value-add
+  - non-value-added
+  suggestions:
+  - waste
+  - wasteful
+  - pointless
+  comment: A good word to forget, unless you enjoy sounding like a used car salesman talking about floor mats.
+- term: octel
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - octels
+  suggestions:
+  - voice mail
+  comment: Octel, baby! Try saying this to a real person, in public. Go ahead.
+- term: offline
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - off-line
+  suggestions:
+  - in private
+  - in another forum
+  comment: We hate to break the news to you, but actually you are not a computer. Maybe you'd like to be, and there's nothing wrong with pretending to be a cyborg every now and then, but not at work. Another tech term that ought to be resisted.
+- term: offload
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - off-load
+  - off-loaded
+  - off-loading
+  - off-loads
+  - offloaded
+  - offloading
+  - offloads
+  suggestions:
+  - delegate
+  - subcontract
+  - defer
+  - delegated
+  - subcontracted
+  - deferred
+  - delegating
+  - subcontracting
+  - deferring
+  - delegates
+  - subcontracts
+  - defers
+  comment: Another system or construction term that sounds like jargon and doesn't tell the reader much.
+- term: operationalise
+  weight: 3
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - operationalised
+  - operationalises
+  - operationalising
+  comment: Another of those words that obscures whatever it is you really wanted to say
+- term: operationalize
+  weight: 3
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - operationalized
+  - operationalizes
+  - operationalizing
+  comment: Another of those words that obscures whatever it is you really wanted to say
+- term: out of pocket
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - out-of-pocket
+  suggestions:
+  - unavailable
+  - away
+  - loafing
+  - out
+  - lint
+  comment: A pretentious word that doesn't say much. Worse still, not everyone understands it.
+- term: out of the box
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - out-of-the-box
+  suggestions:
+  - creative
+  - creatively
+  comment: If you're using this phrase, you are not acquainted with life outside the box.
+- term: out of the loop
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - uninformed
+  - ignorant
+  - unaware
+  comment: Many normal words can replace this used-to-be-hip expression. All of them are better.
+- term: outside the box
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - creative
+  - creatively
+  comment: If you're using this phrase, you are not acquainted with life outside the box.
+- term: paradigm
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - paradigms
+  comment: Congratulations. You sound very expensive.
+- term: paradigm shift
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - paradigm shifts
+  comment: Self-congratulatory term for those who consider themselves brilliantly original but likely aren't.
+- term: parking lot
+  weight: 6
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - parking lots
+  suggestions:
+  - waste basket
+  - waste baskets
+  comment: A place for automobiles. In any other context, this ranks up there with action item in terms of, well -- rankness.
+- term: phase contain
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - phase contained
+  - phase containing
+  - phase containment
+  - phase contains
+  suggestions:
+  - manage
+  - manages
+  - managed
+  - managing
+  - management
+  comment: Quit being a guru.
+- term: ping
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - pinged
+  - pinging
+  - pings
+  suggestions:
+  - tell
+  - ask
+  - tells
+  - asks
+  - told
+  - asked
+  - telling
+  - asking
+  comment: Extreme technical phrase trying to make its way into common speech. Bar the door. Twice. We must stop it. Together we can.
+- term: proactive
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  comment: A real word, but one we overuse to the point that it sounds trite.
+- term: productise
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - productised
+  - productises
+  - productising
+  comment: A flagrant, and none-too-fragrant, bull foul. Making a noun into a verb is the surest way to send your Bull Index score to zero.
+- term: productize
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - productized
+  - productizes
+  - productizing
+  comment: A flagrant, and none-too-fragrant, bull foul. Making a noun into a verb is the surest way to send your Bull Index score to zero.
+- term: push the envelope
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - pushed the envelope
+  - pushes the envelope
+  - pushing the envelope
+  suggestions:
+  - challenge ourselves
+  - set the precedent
+  - take a stupid risk
+  - innovate
+  - challenged ourselves
+  - took a stupid risk
+  - challenges us
+  - sets the precedent
+  - takes a stupid risk
+  - innovates
+  - challenging ourselves
+  - setting the precedent
+  - taking a stupid risk
+  - innovating
+  comment: Another cliche to be avoided. In a well-written document, cliches should be like hens' teeth.
+- term: pure play
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - pure-play
+  comment: You knew the Bull would find this. If you were writing about the theatre, we apologise. But we doubt it.
+- term: qual
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - quals
+  suggestions:
+  - qualification
+  - qualifications
+  comment: Consulting isn't cool. Get over it.
+- term: skin in the game
+  weight: 4
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - incentive to succeed
+  - interest in the outcome
+  comment: Cliches and straight talk don't mix. Revise, or face the wrath of Bullfighter. If you care.
+- term: socialise
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - socialises
+  suggestions:
+  - introduce
+  - distribute
+  - introduces
+  - distributes
+  comment: You socialise with your significant other. Unless you're buying the whole organization drinks and personally delivering the item in question, you're probably not socialising it.
+- term: socialize
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - socializes
+  suggestions:
+  - introduce
+  - distribute
+  - introduces
+  - distributes
+  comment: You socialize with your significant other. Unless you're buying the whole organization drinks and personally delivering the item in question, you're probably not socializing it.
+- term: soup to nuts
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - salad to dessert
+  - pasta to stew
+  - cake to haggis
+  comment: You didn't really think you'd get away with this one, right?
+- term: stakeholder
+  weight: 4
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - stakeholders
+  suggestions:
+  - vampire slayer
+  - fork
+  - victim
+  - vampire slayers
+  - forks
+  - victims
+  comment: A real word overused to the point of pain by consultants.
+- term: strategic
+  weight: 1
+  source: extracted
+  added: '2026-07-01'
+  comment: A real word, but overused to the point where it sounds like hyperbole. Just because something has no short-term, immediate value doesn't mean it's strategic.
+- term: strategise
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - strategised
+  - strategising
+  suggestions:
+  - plan
+  - planning
+  - planned
+  comment: Yikes.
+- term: strategize
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - strategized
+  - strategizing
+  suggestions:
+  - plan
+  - planned
+  - planning
+  comment: Yikes.
+- term: straw man
+  weight: 3
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - straw men
+  - strawman
+  - strawmen
+  suggestions:
+  - sample
+  - prototype
+  - samples
+  - prototypes
+  comment: Obviously we all remember building straw men to keep the crows away at the farm. Ah, the farm. Okay, enough. Time to get past that.
+- term: synch-up
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - sync-up
+  suggestions:
+  - align
+  - coordinate
+  comment: Another colorless mechanical analogy that  sounded okay before it acquired an ill-deserved and fleeting aura of coolness. The aura has fleeted.
+- term: synergistic
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - compatible
+  - complementary
+  comment: Cheer up, it could have been worse. You could have said 'synergistical'. Then Bullfighter would have shut down your PC and sent an instant message to your 4th grade English teacher.
+- term: synergy
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - synergies
+  - synergise
+  - synergised
+  - synergises
+  - synergising
+  - synergize
+  - synergized
+  - synergizes
+  - synergizing
+  comment: The consulting version of 'buy one, get one free.' A legendary bit of consulting jargon. You'd think we would give you credit for using a classic like this. But, we won't. Say something in English.
+- term: thought leader
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - thought leaders
+  - thought leadership
+  suggestions:
+  - expert
+  - experts
+  - expertise
+  comment: Reference to someone who can read and write and has attempted a given task at least once.
+- term: thoughtware
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - document
+  - presentation
+  comment: Try as you might, you can't disguise your white paper as a software program
+- term: time box
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - schedule
+  comment: We know, time boxing is more guru-like. But scheduling is really okay for most of us.
+- term: touch base
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - touched base
+  - touches base
+  suggestions:
+  - talk
+  comment: Another term revealing an almost Freudian association between consultants and secret agents.
+- term: touch point
+  weight: 3
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - touch points
+  suggestions:
+  - interaction
+  - interactions
+  comment: A minor bull foul. A real expression, but overused.
+- term: transformation
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - transformational
+  - transformations
+  suggestions:
+  - change
+  - changes
+  comment: Not a bad word, but a transformation refers to extensive change, and consultants are ridiculed for using words like 'transformation' for pretty much anything. Like sticking a motor on a Bianchi bicycle and transforming it into a Harley Davidson.
+- term: transparent
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - transparency
+  suggestions:
+  - simplicity
+  - clarity
+  - simple
+  - clear
+  comment: A real word when applied to glass or cellophane. An official bull term when used to describe a complex system or program.
+- term: unleash
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - unleashed
+  - unleashes
+  - unleashing
+  comment: Oh please.
+- term: utilize
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - utilized
+  - utilizes
+  - utilizing
+  suggestions:
+  - use
+  - uses
+  - used
+  - using
+  comment: A real word, but the shorter 'use' is just as effective. And it will help your Flesch Reading Ease score, seeing as your Bull score just took another hit.
+- term: utilise
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - utilised
+  - utilises
+  - utilising
+  suggestions:
+  - use
+  - uses
+  - used
+  - using
+  comment: A real word, but the shorter 'use' is just as effective. And it will help your Flesch Reading Ease score, seeing as your Bull score just took another hit.
+- term: value add
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - value-add
+  - value-added
+  suggestions:
+  - benefit
+  - beneficial
+  comment: A good word to forget, unless you enjoy sounding like a used car salesman talking about floor mats.
+- term: value proposition
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - value propositions
+  suggestions:
+  - value
+  - reason
+  - values
+  - reasons
+  comment: Nonsensical term implying that the project in question is a waste of money.
+- term: value-based
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - speculative
+  comment: Value is a loaded word. Cynical readers take it to mean that the writer is trying to justify the purchase cost (a certainty) with future benefits (not a certainty). Use judiciously.
+- term: value-capturing
+  weight: 5
+  source: extracted
+  added: '2026-07-01'
+  comment: Value is a loaded word. Cynical readers take it to mean that the writer is trying to justify the purchase cost (a certainty) with future benefits (not a certainty). Use judiciously.
+- term: verbiage
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  suggestions:
+  - text
+  comment: Verbiage means excessive wordiness. Adding verbiage to something means padding it with useless words. More food for the bull!
+- term: visionary
+  weight: 1
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - visionaries
+  comment: daVincis, Galileos, Jeffersons, Gandhis. Not your IT manager or project partner, generally speaking.
+- term: vortal
+  weight: 9
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - vortals
+  comment: A made-up word that wasn't even so great back in the 1990s. And -- it hasn't improved.
+- term: walk the talk
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - walked the talk
+  - walking the talk
+  - walks the talk
+  suggestions:
+  - act accordingly
+  - acted accordingly
+  - acting accordingly
+  - acts accordingly
+  comment: Beyond cliche, this phrase implies that the writer has no original thoughts and must rely on what was sort of profound in 1972. But not really.
+- term: walk the walk
+  weight: 7
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - walked the walk
+  - walking the walk
+  - walks the walk
+  comment: Beyond cliche, this phrase implies that the writer has no original thoughts and must rely on what was sort of profound in 1972. But not really. As an added bonus, it makes no sense.
+- term: whiteboard
+  weight: 2
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - whiteboarded
+  - whiteboarding
+  - whiteboards
+  suggestions:
+  - draw
+  - draws
+  - drew
+  - drawing
+  comment: Fine as a noun. A true geek consulting-ism as a verb.
+- term: win-win
+  weight: 8
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - win-wins
+  comment: Consulting cheerleader-speak.
+- term: wordsmith
+  weight: 10
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - wordsmithed
+  - wordsmithing
+  - wordsmiths
+  suggestions:
+  - edit
+  - revise
+  - edits
+  - revises
+  - editing
+  - revising
+  - edited
+  - revised
+  comment: Save the hammer and forge thing for history and mythology. We'll let you know when your editing gets to the craft level. So far, it's not.
+- term: world class
+  weight: 4
+  source: extracted
+  added: '2026-07-01'
+  forms:
+  - world-class
+  suggestions:
+  - best
+  - superior
+  - excellent
+  comment: A tired expression that has lost its meaning. Give it a rest. Whenever someone says something is world-class, it isn't.

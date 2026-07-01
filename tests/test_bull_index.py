@@ -21,9 +21,16 @@ def test_find_hits_terms_and_offsets():
     assert "We must leverage synergy now."[lev.start:lev.end].lower() == "leverage"
 
 
-def test_find_hits_matches_inflections_and_hyphen_variants():
+def test_find_hits_matches_forms_and_hyphen_variants():
     assert any(h.term == "leverage" for h in find_hits("We leveraged it.", C))
-    assert any(h.term == "value add" for h in find_hits("a value-added result", C))
+    assert any(h.term == "synergy" for h in find_hits("great synergies here", C))
+    assert any(h.term == "best in class" for h in find_hits("a best-in-class result", C))
+
+
+def test_hits_carry_suggestions():
+    hits = find_hits("We leveraged it.", C)
+    lev = next(h for h in hits if h.term == "leverage")
+    assert "use" in lev.suggestions
 
 
 def test_bull_scores_formula():

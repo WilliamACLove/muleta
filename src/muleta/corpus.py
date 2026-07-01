@@ -15,12 +15,18 @@ class CorpusError(Exception):
 
 @dataclass(frozen=True)
 class Entry:
-    term: str
+    term: str  # the lemma / base surface form
     weight: int  # Bull weight Bi, 1 (abused real word) .. 10 (worst coinage)
     source: str
     added: str
+    forms: tuple[str, ...] = ()  # other surface forms to match (inflections/variants)
+    suggestions: tuple[str, ...] = ()  # plain-language replacements
+    comment: str = ""  # the original "diagnosis"
     notes: str = ""
-    suggestions: tuple[str, ...] = ()
+
+    def surfaces(self) -> list[str]:
+        """All matchable surface forms: the lemma plus its variants."""
+        return [self.term, *self.forms]
 
 
 class Corpus:
@@ -39,12 +45,14 @@ class Corpus:
         seen: set[str] = set()
         for row in raw["entries"]:
             e = Entry(
-                str(row["term"]),
-                int(row["weight"]),
-                str(row["source"]),
-                str(row["added"]),
-                str(row.get("notes", "")),
-                tuple(row.get("suggestions", []) or ()),
+                term=str(row["term"]),
+                weight=int(row["weight"]),
+                source=str(row["source"]),
+                added=str(row["added"]),
+                forms=tuple(row.get("forms", []) or ()),
+                suggestions=tuple(row.get("suggestions", []) or ()),
+                comment=str(row.get("comment", "")),
+                notes=str(row.get("notes", "")),
             )
             if not (1 <= e.weight <= 10):
                 raise CorpusError(f"weight out of range (1..10) for {e.term!r}")
@@ -67,14 +75,23 @@ class Corpus:
         e = self._by_term.get(term.lower())
         return e.weight if e else None
 
-    def add(self, term, weight, source, added, note="", suggestions=()):
+    def add(self, term, weight, source, added, note="", forms=(), suggestions=(), comment=""):
         if self.weight(term) is not None:
             raise CorpusError(f"term already exists: {term!r}")
         if not (1 <= int(weight) <= 10):
             raise CorpusError("weight must be 1..10")
         if source not in VALID_SOURCES:
             raise CorpusError(f"bad source: {source}")
-        e = Entry(str(term), int(weight), str(source), str(added), str(note), tuple(suggestions))
+        e = Entry(
+            term=str(term),
+            weight=int(weight),
+            source=str(source),
+            added=str(added),
+            forms=tuple(forms),
+            suggestions=tuple(suggestions),
+            comment=str(comment),
+            notes=str(note),
+        )
         self._entries.append(e)
         self._by_term[e.term.lower()] = e
 
@@ -89,12 +106,16 @@ class Corpus:
         rows = []
         for e in self._entries:
             row = {"term": e.term, "weight": e.weight, "source": e.source, "added": e.added}
-            if e.notes:
-                row["notes"] = e.notes
+            if e.forms:
+                row["forms"] = list(e.forms)
             if e.suggestions:
                 row["suggestions"] = list(e.suggestions)
+            if e.comment:
+                row["comment"] = e.comment
+            if e.notes:
+                row["notes"] = e.notes
             rows.append(row)
         Path(path).write_text(
-            yaml.safe_dump({"version": self.version, "entries": rows}, sort_keys=False, allow_unicode=True),
+            yaml.safe_dump({"version": self.version, "entries": rows}, sort_keys=False, allow_unicode=True, width=4000),
             encoding="utf-8",
         )

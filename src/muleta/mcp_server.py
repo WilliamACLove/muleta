@@ -29,7 +29,13 @@ def find_jargon(text: str) -> dict:
     return {
         "count": len(r.hits),
         "hits": [
-            {"term": h.term, "weight": h.weight, "start": h.start, "end": h.end}
+            {
+                "term": h.term,
+                "weight": h.weight,
+                "start": h.start,
+                "end": h.end,
+                "suggestions": list(h.suggestions),
+            }
             for h in r.hits
         ],
         "corpus_version": r.corpus_version,

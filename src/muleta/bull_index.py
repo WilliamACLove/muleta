@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import re
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
-from muleta.corpus import Corpus
+from muleta.corpus import Corpus, Entry
 from muleta.text import words
 
 
@@ -14,6 +14,7 @@ class Hit:
     weight: int
     start: int
     end: int
+    suggestions: tuple[str, ...] = field(default=())
 
 
 def weight_factor(n_words: int) -> int:
@@ -27,23 +28,23 @@ def weight_factor(n_words: int) -> int:
     return 5
 
 
-def _term_pattern(term: str) -> re.Pattern:
-    tokens = re.split(r"[ \-]+", term)
-    core = r"[ \-]".join(re.escape(t) for t in tokens)
-    if core.endswith("y"):  # y -> ies/ied/ying (synergy -> synergies)
-        body = core[:-1] + r"(?:y|ies|ied|ying)"
-    else:
-        body = core + r"(?:s|es|ed|ing|d)?"
+def _entry_pattern(entry: Entry) -> re.Pattern:
+    """Match any of the entry's explicit surface forms, word-bounded and
+    space/hyphen-flexible. Longest forms first so the fullest match wins."""
+    alts = []
+    for surface in sorted(entry.surfaces(), key=len, reverse=True):
+        tokens = re.split(r"[ \-]+", surface.strip())
+        alts.append(r"[ \-]+".join(re.escape(t) for t in tokens if t))
+    body = "(?:" + "|".join(alts) + ")"
     return re.compile(r"(?<![A-Za-z])" + body + r"(?![A-Za-z])", re.IGNORECASE)
 
 
 def find_hits(text: str, corpus: Corpus) -> list[Hit]:
-    """Word-bounded, case-insensitive matches of corpus terms (incl. simple
-    inflections and hyphen/space variants)."""
+    """Word-bounded, case-insensitive matches of corpus terms and their forms."""
     hits: list[Hit] = []
     for entry in corpus.entries():
-        for m in _term_pattern(entry.term).finditer(text):
-            hits.append(Hit(entry.term, entry.weight, m.start(), m.end()))
+        for m in _entry_pattern(entry).finditer(text):
+            hits.append(Hit(entry.term, entry.weight, m.start(), m.end(), entry.suggestions))
     hits.sort(key=lambda h: h.start)
     return hits
 

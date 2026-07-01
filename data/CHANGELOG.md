@@ -1,5 +1,18 @@
 # Corpus Changelog
 
+## 1.1.0 — 2026-07-01
+- **Clean read of the recovered Access `.mdb`** (via `access-parser`; the data pages are
+  not encrypted). Replaces the lossy plaintext extraction with exact data:
+  - **135 lemmas** with **exact Bull weights** straight from the DB (e.g. synergy=10,
+    architect=9, bandwidth=5, best practice=1) — no longer tier-guessed.
+  - **Explicit surface forms** per lemma (leveraged/leverages/leveraging), so matching is
+    exact rather than regex-inflected.
+  - **Clean replacement suggestions** (leverage → use, reuse; holistic → complete,
+    comprehensive) — now surfaced by the engine, CLI, and MCP tools.
+  - The original **"diagnosis" comments** carried per entry.
+- Reproducible via `tools/build_corpus_from_mdb.py` (needs the `tools` extra). The `.mdb`
+  itself is not distributed.
+
 ## 1.0.0 — 2026-07-01
 - **Authentic dictionary.** 113 headwords recovered from the shipped Bullfighter 1.2
   installer (Wayback Machine capture of fightthebull.com → Wise-installer payload →
