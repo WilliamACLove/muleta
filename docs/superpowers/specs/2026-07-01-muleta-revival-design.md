@@ -1,10 +1,19 @@
-# Bullfighter Revival — Design Spec
+# Muleta -- Design Spec (homage to Bullfighter)
 
 **Date:** 2026-07-01
 **Status:** Approved for planning
-**Repo:** `bullfighter` (public GitHub, owner `WilliamACLove`); local working copy at `C:\Users\William\dev\bullfighter` (off the cloud mount).
+**Repo:** `muleta` (public GitHub, owner `WilliamACLove`); local working copy at `C:\Users\William\dev\muleta` (off the cloud mount).
 
 ---
+
+## Homage
+
+Muleta is an homage to Deloitte Consulting's discontinued *Bullfighter* (2003-2005),
+the tool that first turned jargon-hunting into a score. It is named for the *muleta* --
+the matador's small red cape, used to guide the bull -- because this tool guides writing
+away from bull. The original scoring vocabulary (Bull Index, Bull Composite) is kept in
+tribute, and the source installer (`Bullfighter.exe`) is preserved as the artifact of
+record.
 
 ## 1. Background
 
@@ -81,8 +90,8 @@ existing tooling ecosystem.
 ## 6. Architecture — Six Layers
 
 ```
-bullfighter/                     public repo; local copy off the cloud mount
-├─ bullfighter/                  LAYER 1 — core engine (pure Python, no LLM, no I/O)
+muleta/                     public repo; local copy off the cloud mount
+├─ muleta/                  LAYER 1 — core engine (pure Python, no LLM, no I/O)
 │   ├─ text.py                   tokenizer, sentence splitter, syllable counter
 │   ├─ flesch.py                 Flesch Reading Ease
 │   ├─ bull_index.py             jargon matching + severity scoring
@@ -93,7 +102,7 @@ bullfighter/                     public repo; local copy off the cloud mount
 │   ├─ jargon.yaml               LAYER 2 — versioned dictionary (word, severity,
 │   │                            source, notes, added); the archival record
 │   └─ CHANGELOG.md              human-readable corpus change history
-├─ cli/                          LAYER 3 — `bullfighter score|dejargon|extract|corpus`
+├─ cli/                          LAYER 3 — `muleta score|dejargon|extract|corpus`
 ├─ llm/                          LAYER 4 — provider-agnostic; Anthropic default
 │   ├─ client.py                 thin provider abstraction (Claude default)
 │   ├─ explain.py                why each hit is jargon, in context
@@ -106,7 +115,7 @@ bullfighter/                     public repo; local copy off the cloud mount
 └─ docs/                         methodology writeup, provenance, this spec
 ```
 
-**Layer 6 — Claude Code `/bullfighter` skill.** Wraps the CLI/MCP and installs
+**Layer 6 — Claude Code `/muleta` skill.** Wraps the CLI/MCP and installs
 into `~/.claude/skills/`. Referenced from the repo (its source lives in the
 repo under e.g. `skill/`), installed into the user's ecosystem separately.
 
@@ -142,18 +151,18 @@ the corpus is a deliberate, logged act — scores never shift silently.
 
 **Update paths (all human-in-the-loop for anything automated):**
 
-- `bullfighter corpus list | show <term>` — inspect.
-- `bullfighter corpus add|edit|remove <term> [--severity N] [--note ...]` —
+- `muleta corpus list | show <term>` — inspect.
+- `muleta corpus add|edit|remove <term> [--severity N] [--note ...]` —
   manual curation; writes the entry with provenance and appends to the
   changelog.
-- `bullfighter corpus import <file>` — merge an external word list, with a
+- `muleta corpus import <file>` — merge an external word list, with a
   conflict/dedup pass and a diff preview before commit.
-- `bullfighter corpus suggest <document|url>` — the LLM layer proposes candidate
+- `muleta corpus suggest <document|url>` — the LLM layer proposes candidate
   bullwords (fed by `context_scan`, which already surfaces jargon the fixed list
   misses); suggestions land in a review queue tagged `source: llm-suggested`
   and are **never** auto-committed — a human approves each before it enters the
   scored corpus.
-- `bullfighter corpus validate` — schema + integrity check (unique terms, valid
+- `muleta corpus validate` — schema + integrity check (unique terms, valid
   severity, provenance present); runs in CI.
 
 **Design consequence:** because scores are corpus-versioned, updating the corpus
@@ -214,7 +223,7 @@ These may follow once the engine is proven.
 - Public GitHub repo under `WilliamACLove`, created via `gh` CLI (being
   installed; user does a one-time `gh auth login` interactively, then the repo
   is created and pushed).
-- Local working copy on a real local path (`C:\Users\William\dev\bullfighter`)
+- Local working copy on a real local path (`C:\Users\William\dev\muleta`)
   to avoid the cloud mount's known silent-write-drop behavior.
 - The repo (git history + this spec) is the durable home; work resumes from the
   repo, not from any chat session.

@@ -1,8 +1,8 @@
-# Bullfighter Phase 1 — MCP Server (Engine + Corpus + MCP) — Implementation Plan
+# Muleta Phase 1 — MCP Server (Engine + Corpus + MCP) — Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Ship Bullfighter as an **MCP server** — jargon detection + Flesch + Bull Composite (1–10) + a versioned, updatable corpus — exposed as MCP tools any LLM client can call, backed by a pure deterministic engine.
+**Goal:** Ship Muleta as an **MCP server** — jargon detection + Flesch + Bull Composite (1–10) + a versioned, updatable corpus — exposed as MCP tools any LLM client can call, backed by a pure deterministic engine.
 
 **Architecture:** A pure-Python core engine turns text into a structured `Report` (Bull Index, Flesch Reading Ease, Bull Composite, jargon hits with offsets, corpus version). An **MCP server** (FastMCP, stdio) exposes the engine and corpus as tools (`score_text`, `find_jargon`, `corpus_list`, `corpus_add`); the *calling* LLM does explanation/rewriting grounded on the deterministic scores. A lean CLI is retained for local testing and generating golden values. The jargon corpus is a versioned YAML dataset with provenance and a changelog.
 
@@ -10,13 +10,22 @@
 
 ---
 
+## Homage
+
+Muleta is an homage to Deloitte Consulting's discontinued *Bullfighter* (2003-2005),
+the tool that first turned jargon-hunting into a score. It is named for the *muleta* --
+the matador's small red cape, used to guide the bull -- because this tool guides writing
+away from bull. The original scoring vocabulary (Bull Index, Bull Composite) is kept in
+tribute, and the source installer (`Bullfighter.exe`) is preserved as the artifact of
+record.
+
 ## File Structure
 
 ```
-bullfighter/
+muleta/
 ├─ pyproject.toml                 packaging, deps, console_scripts (cli + mcp)
 ├─ README.md                      what/why, MCP client config, usage
-├─ src/bullfighter/
+├─ src/muleta/
 │   ├─ __init__.py                version, public API re-exports
 │   ├─ text.py                    tokenize words, split sentences, count syllables
 │   ├─ flesch.py                  Flesch Reading Ease
@@ -26,7 +35,7 @@ bullfighter/
 │   ├─ report.py                  Report dataclass (the single output contract)
 │   ├─ parse.py                   read .txt / .docx into plain text
 │   ├─ mcp_server.py             FastMCP server exposing engine + corpus tools
-│   └─ cli.py                     lean CLI: `bullfighter score|corpus`
+│   └─ cli.py                     lean CLI: `muleta score|corpus`
 ├─ data/
 │   ├─ jargon.yaml                the corpus (seed + recovered)
 │   └─ CHANGELOG.md               corpus change history
@@ -59,7 +68,7 @@ bullfighter/
 
 ### Task 0: Project scaffolding
 
-**Files:** Create `pyproject.toml`, `src/bullfighter/__init__.py`, `README.md`, `tests/__init__.py`.
+**Files:** Create `pyproject.toml`, `src/muleta/__init__.py`, `README.md`, `tests/__init__.py`.
 
 - [ ] **Step 1: Write `pyproject.toml`**
 
@@ -69,7 +78,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "bullfighter"
+name = "muleta"
 version = "0.1.0"
 description = "Revival of Deloitte's Bullfighter as an MCP server: jargon detection + readability scoring."
 requires-python = ">=3.11"
@@ -79,8 +88,8 @@ dependencies = ["mcp>=1.10", "pyyaml>=6", "python-docx>=1.1", "click>=8.1"]
 dev = ["pytest>=8", "anyio>=4", "ruff>=0.5"]
 
 [project.scripts]
-bullfighter = "bullfighter.cli:main"
-bullfighter-mcp = "bullfighter.mcp_server:run"
+muleta = "muleta.cli:main"
+muleta-mcp = "muleta.mcp_server:run"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -90,7 +99,7 @@ pythonpath = ["src"]
 testpaths = ["tests"]
 ```
 
-- [ ] **Step 2: Write `src/bullfighter/__init__.py`**
+- [ ] **Step 2: Write `src/muleta/__init__.py`**
 
 ```python
 __version__ = "0.1.0"
@@ -99,10 +108,10 @@ __version__ = "0.1.0"
 - [ ] **Step 3: Write minimal `README.md`**
 
 ```markdown
-# Bullfighter (MCP)
+# Muleta
 
 A revival of Deloitte Consulting's discontinued Bullfighter (2003–2005): detect
-business jargon and score writing clarity. A deterministic engine (Bull Index +
+business jargon and score writing clarity. Muleta is an homage to the original, named for the matador's red cape. A deterministic engine (Bull Index +
 Flesch Reading Ease + Bull Composite 1–10) with a versioned, updatable jargon
 corpus, delivered as an **MCP server** any LLM client can call. See `docs/` for
 methodology and provenance. MCP client configuration lives below (added in the
@@ -112,7 +121,7 @@ MCP task).
 - [ ] **Step 4: Create venv and install dev deps**
 
 Run: `python -m venv .venv && .venv/Scripts/pip install -e ".[dev]"`
-Expected: installs bullfighter (+ mcp) editable, exit 0.
+Expected: installs muleta (+ mcp) editable, exit 0.
 
 - [ ] **Step 5: Verify pytest discovers (no tests yet)**
 
@@ -122,20 +131,20 @@ Expected: "no tests ran" (exit 5).
 - [ ] **Step 6: Commit**
 
 ```bash
-git add pyproject.toml src/bullfighter/__init__.py README.md tests/__init__.py
-git commit -m "chore: scaffold bullfighter MCP package"
+git add pyproject.toml src/muleta/__init__.py README.md tests/__init__.py
+git commit -m "chore: scaffold muleta MCP package"
 ```
 
 ---
 
 ### Task 1: Text utilities (words, sentences, syllables)
 
-**Files:** Create `src/bullfighter/text.py`; Test `tests/test_text.py`.
+**Files:** Create `src/muleta/text.py`; Test `tests/test_text.py`.
 
 - [ ] **Step 1: Write failing tests**
 
 ```python
-from bullfighter.text import words, sentences, count_syllables
+from muleta.text import words, sentences, count_syllables
 
 def test_words_basic():
     assert words("The cat sat.") == ["The", "cat", "sat"]
@@ -159,7 +168,7 @@ def test_count_syllables_common_words():
 - [ ] **Step 2: Run to verify fail**
 
 Run: `.venv/Scripts/pytest tests/test_text.py -q`
-Expected: FAIL — `ModuleNotFoundError: No module named 'bullfighter.text'`
+Expected: FAIL — `ModuleNotFoundError: No module named 'muleta.text'`
 
 - [ ] **Step 3: Implement `text.py`**
 
@@ -197,7 +206,7 @@ Expected: PASS (5 passed)
 - [ ] **Step 5: Commit**
 
 ```bash
-git add src/bullfighter/text.py tests/test_text.py
+git add src/muleta/text.py tests/test_text.py
 git commit -m "feat: text tokenization and syllable counting"
 ```
 
@@ -205,13 +214,13 @@ git commit -m "feat: text tokenization and syllable counting"
 
 ### Task 2: Flesch Reading Ease
 
-**Files:** Create `src/bullfighter/flesch.py`; Test `tests/test_flesch.py`.
+**Files:** Create `src/muleta/flesch.py`; Test `tests/test_flesch.py`.
 
 - [ ] **Step 1: Write failing tests**
 
 ```python
 import pytest
-from bullfighter.flesch import flesch_reading_ease
+from muleta.flesch import flesch_reading_ease
 
 def test_flesch_simple_sentence():
     # "The cat sat." -> words=3, sentences=1, syllables=3
@@ -230,7 +239,7 @@ Expected: FAIL — module not found.
 - [ ] **Step 3: Implement `flesch.py`**
 
 ```python
-from bullfighter.text import words, sentences, count_syllables
+from muleta.text import words, sentences, count_syllables
 
 def flesch_reading_ease(text: str) -> float:
     w = words(text)
@@ -250,7 +259,7 @@ Expected: PASS (2 passed)
 - [ ] **Step 5: Commit**
 
 ```bash
-git add src/bullfighter/flesch.py tests/test_flesch.py
+git add src/muleta/flesch.py tests/test_flesch.py
 git commit -m "feat: Flesch Reading Ease"
 ```
 
@@ -258,7 +267,7 @@ git commit -m "feat: Flesch Reading Ease"
 
 ### Task 3: Corpus (schema, load, validate)
 
-**Files:** Create `data/jargon.yaml`, `data/CHANGELOG.md`, `src/bullfighter/corpus.py`; Test `tests/test_corpus.py`.
+**Files:** Create `data/jargon.yaml`, `data/CHANGELOG.md`, `src/muleta/corpus.py`; Test `tests/test_corpus.py`.
 
 - [ ] **Step 1: Write seed `data/jargon.yaml`**
 
@@ -303,7 +312,7 @@ entries:
 
 ```python
 import pytest
-from bullfighter.corpus import Corpus, CorpusError
+from muleta.corpus import Corpus, CorpusError
 
 def test_load_default_corpus():
     c = Corpus.load()
@@ -402,7 +411,7 @@ Expected: PASS (4 passed)
 - [ ] **Step 7: Commit**
 
 ```bash
-git add data/jargon.yaml data/CHANGELOG.md src/bullfighter/corpus.py tests/test_corpus.py
+git add data/jargon.yaml data/CHANGELOG.md src/muleta/corpus.py tests/test_corpus.py
 git commit -m "feat: versioned jargon corpus with validation"
 ```
 
@@ -410,14 +419,14 @@ git commit -m "feat: versioned jargon corpus with validation"
 
 ### Task 4: Bull Index (jargon matching)
 
-**Files:** Create `src/bullfighter/bull_index.py`; Test `tests/test_bull_index.py`.
+**Files:** Create `src/muleta/bull_index.py`; Test `tests/test_bull_index.py`.
 
 - [ ] **Step 1: Write failing tests**
 
 ```python
 import pytest
-from bullfighter.corpus import Corpus
-from bullfighter.bull_index import find_hits, bull_index
+from muleta.corpus import Corpus
+from muleta.bull_index import find_hits, bull_index
 
 C = Corpus.load()
 
@@ -450,8 +459,8 @@ Expected: FAIL — module not found.
 from __future__ import annotations
 from dataclasses import dataclass
 import re
-from bullfighter.corpus import Corpus
-from bullfighter.text import words
+from muleta.corpus import Corpus
+from muleta.text import words
 
 @dataclass(frozen=True)
 class Hit:
@@ -486,7 +495,7 @@ Expected: PASS (4 passed)
 - [ ] **Step 5: Commit**
 
 ```bash
-git add src/bullfighter/bull_index.py tests/test_bull_index.py
+git add src/muleta/bull_index.py tests/test_bull_index.py
 git commit -m "feat: Bull Index jargon matching and density"
 ```
 
@@ -494,13 +503,13 @@ git commit -m "feat: Bull Index jargon matching and density"
 
 ### Task 5: Bull Composite score
 
-**Files:** Create `src/bullfighter/composite.py`; Test `tests/test_composite.py`.
+**Files:** Create `src/muleta/composite.py`; Test `tests/test_composite.py`.
 
 - [ ] **Step 1: Write failing tests**
 
 ```python
 import pytest
-from bullfighter.composite import bull_composite, FORMULA_VERSION, K_PENALTY
+from muleta.composite import bull_composite, FORMULA_VERSION, K_PENALTY
 
 def test_formula_pinned():
     assert FORMULA_VERSION == "bfc-v1" and K_PENALTY == 30.0
@@ -547,7 +556,7 @@ Expected: PASS (4 passed)
 - [ ] **Step 5: Commit**
 
 ```bash
-git add src/bullfighter/composite.py tests/test_composite.py
+git add src/muleta/composite.py tests/test_composite.py
 git commit -m "feat: Bull Composite score (bfc-v1)"
 ```
 
@@ -555,12 +564,12 @@ git commit -m "feat: Bull Composite score (bfc-v1)"
 
 ### Task 6: Report (the output contract) + top-level API
 
-**Files:** Create `src/bullfighter/report.py`; Modify `src/bullfighter/__init__.py`; Test `tests/test_report.py`.
+**Files:** Create `src/muleta/report.py`; Modify `src/muleta/__init__.py`; Test `tests/test_report.py`.
 
 - [ ] **Step 1: Write failing tests**
 
 ```python
-from bullfighter.report import score, Report
+from muleta.report import score, Report
 
 def test_score_all_fields():
     r = score("We must leverage synergy to win.")
@@ -576,8 +585,8 @@ def test_to_dict_json_ready():
     assert d["hits"][0]["term"] == "leverage"
 
 def test_public_api():
-    import bullfighter
-    assert hasattr(bullfighter, "score")
+    import muleta
+    assert hasattr(muleta, "score")
 ```
 
 - [ ] **Step 2: Run to verify fail**
@@ -590,11 +599,11 @@ Expected: FAIL — module not found.
 ```python
 from __future__ import annotations
 from dataclasses import dataclass, asdict
-from bullfighter.corpus import Corpus
-from bullfighter.text import words
-from bullfighter.flesch import flesch_reading_ease
-from bullfighter.bull_index import find_hits, Hit, bull_index as _bull_index
-from bullfighter.composite import bull_composite, FORMULA_VERSION
+from muleta.corpus import Corpus
+from muleta.text import words
+from muleta.flesch import flesch_reading_ease
+from muleta.bull_index import find_hits, Hit, bull_index as _bull_index
+from muleta.composite import bull_composite, FORMULA_VERSION
 
 @dataclass(frozen=True)
 class Report:
@@ -626,12 +635,12 @@ def score(text: str, corpus: Corpus | None = None) -> Report:
     )
 ```
 
-- [ ] **Step 4: Update `src/bullfighter/__init__.py`**
+- [ ] **Step 4: Update `src/muleta/__init__.py`**
 
 ```python
 __version__ = "0.1.0"
 
-from bullfighter.report import score, Report  # noqa: E402
+from muleta.report import score, Report  # noqa: E402
 
 __all__ = ["score", "Report", "__version__"]
 ```
@@ -644,7 +653,7 @@ Expected: PASS (3 passed)
 - [ ] **Step 6: Commit**
 
 ```bash
-git add src/bullfighter/report.py src/bullfighter/__init__.py tests/test_report.py
+git add src/muleta/report.py src/muleta/__init__.py tests/test_report.py
 git commit -m "feat: Report contract and top-level score() API"
 ```
 
@@ -652,7 +661,7 @@ git commit -m "feat: Report contract and top-level score() API"
 
 ### Task 7: Corpus mutation (add/remove/save) — needed by MCP corpus tools
 
-**Files:** Modify `src/bullfighter/corpus.py`; Test append to `tests/test_corpus.py`.
+**Files:** Modify `src/muleta/corpus.py`; Test append to `tests/test_corpus.py`.
 
 - [ ] **Step 1: Write failing tests (append to `tests/test_corpus.py`)**
 
@@ -727,7 +736,7 @@ Expected: PASS (all corpus tests)
 - [ ] **Step 5: Commit**
 
 ```bash
-git add src/bullfighter/corpus.py tests/test_corpus.py
+git add src/muleta/corpus.py tests/test_corpus.py
 git commit -m "feat: corpus mutation (add/remove/save)"
 ```
 
@@ -735,14 +744,14 @@ git commit -m "feat: corpus mutation (add/remove/save)"
 
 ### Task 8: Document parsing (.txt / .docx)
 
-**Files:** Create `src/bullfighter/parse.py`; Test `tests/test_parse.py`.
+**Files:** Create `src/muleta/parse.py`; Test `tests/test_parse.py`.
 
 - [ ] **Step 1: Write failing tests**
 
 ```python
 import pytest
 from docx import Document
-from bullfighter.parse import read_text
+from muleta.parse import read_text
 
 def test_read_txt(tmp_path):
     p = tmp_path / "a.txt"
@@ -790,7 +799,7 @@ Expected: PASS (3 passed)
 - [ ] **Step 5: Commit**
 
 ```bash
-git add src/bullfighter/parse.py tests/test_parse.py
+git add src/muleta/parse.py tests/test_parse.py
 git commit -m "feat: read .txt and .docx documents"
 ```
 
@@ -798,7 +807,7 @@ git commit -m "feat: read .txt and .docx documents"
 
 ### Task 9: MCP server (the headline deliverable)
 
-**Files:** Create `src/bullfighter/mcp_server.py`; Test `tests/test_mcp_server.py`; Modify `README.md`.
+**Files:** Create `src/muleta/mcp_server.py`; Test `tests/test_mcp_server.py`; Modify `README.md`.
 
 **Design note:** each tool's logic lives in a plain helper function (`_score_text`,
 etc.); the `@mcp.tool()`-decorated wrapper just calls it. Tests exercise the
@@ -818,7 +827,7 @@ just use it consistently below.
 - [ ] **Step 2: Write failing tests**
 
 ```python
-from bullfighter import mcp_server as S
+from muleta import mcp_server as S
 
 def test_score_text_tool_returns_report_dict():
     d = S.score_text("We must leverage synergy to win.")
@@ -843,7 +852,7 @@ def test_corpus_add_tool_writes(tmp_path, monkeypatch):
     monkeypatch.setattr(S, "CORPUS_PATH", src)
     out = S.corpus_add("bandwidth", severity=4, source="user", note="x")
     assert out["ok"] is True
-    from bullfighter.corpus import Corpus
+    from muleta.corpus import Corpus
     assert Corpus.load(src).severity("bandwidth") == 4
 
 def test_server_object_is_fastmcp():
@@ -863,10 +872,10 @@ from __future__ import annotations
 import datetime as _dt
 from pathlib import Path
 from mcp.server.fastmcp import FastMCP
-from bullfighter.report import score as _score
-from bullfighter.corpus import Corpus, _DEFAULT_PATH
+from muleta.report import score as _score
+from muleta.corpus import Corpus, _DEFAULT_PATH
 
-mcp = FastMCP("bullfighter")
+mcp = FastMCP("muleta")
 
 # Overridable in tests; defaults to the packaged corpus.
 CORPUS_PATH: Path = _DEFAULT_PATH
@@ -925,7 +934,7 @@ Expected: PASS (5 passed)
 
 - [ ] **Step 6: Smoke-test the server starts over stdio**
 
-Run: `.venv/Scripts/python -c "from bullfighter.mcp_server import mcp; import anyio; print('tools:', anyio.run(lambda: mcp.list_tools()))"`
+Run: `.venv/Scripts/python -c "from muleta.mcp_server import mcp; import anyio; print('tools:', anyio.run(lambda: mcp.list_tools()))"`
 Expected: prints a list including `score_text`, `find_jargon`, `corpus_list`, `corpus_add`.
 (If `list_tools()` signature differs in the installed SDK, skip this optional smoke check — the pytest suite already proves the tools work.)
 
@@ -941,8 +950,8 @@ After `pip install -e .`, register the server with any MCP client.
 ```json
 {
   "mcpServers": {
-    "bullfighter": {
-      "command": "bullfighter-mcp"
+    "muleta": {
+      "command": "muleta-mcp"
     }
   }
 }
@@ -956,7 +965,7 @@ deterministic scores these tools return.
 - [ ] **Step 8: Commit**
 
 ```bash
-git add src/bullfighter/mcp_server.py tests/test_mcp_server.py README.md
+git add src/muleta/mcp_server.py tests/test_mcp_server.py README.md
 git commit -m "feat: MCP server exposing engine + corpus as tools"
 ```
 
@@ -964,14 +973,14 @@ git commit -m "feat: MCP server exposing engine + corpus as tools"
 
 ### Task 10: Lean CLI (local testing + golden values)
 
-**Files:** Create `src/bullfighter/cli.py`; Test `tests/test_cli.py`.
+**Files:** Create `src/muleta/cli.py`; Test `tests/test_cli.py`.
 
 - [ ] **Step 1: Write failing tests**
 
 ```python
 import json
 from click.testing import CliRunner
-from bullfighter.cli import main
+from muleta.cli import main
 
 def test_score_text_json():
     res = CliRunner().invoke(main, ["score", "--text", "leverage now", "--json"])
@@ -999,9 +1008,9 @@ from __future__ import annotations
 import json as _json
 import sys
 import click
-from bullfighter.report import score as _score
-from bullfighter.parse import read_text
-from bullfighter.corpus import Corpus
+from muleta.report import score as _score
+from muleta.parse import read_text
+from muleta.corpus import Corpus
 
 def _get_text(path, text):
     if text is not None:
@@ -1022,7 +1031,7 @@ def _render(r):
 
 @click.group()
 def main():
-    """Bullfighter: detect jargon, score clarity."""
+    """Muleta: detect jargon, score clarity."""
 
 @main.command()
 @click.argument("path", required=False)
@@ -1051,7 +1060,7 @@ Expected: PASS (3 passed)
 - [ ] **Step 5: Commit**
 
 ```bash
-git add src/bullfighter/cli.py tests/test_cli.py
+git add src/muleta/cli.py tests/test_cli.py
 git commit -m "feat: lean CLI for local scoring and corpus inspection"
 ```
 
@@ -1077,7 +1086,7 @@ We will use our skills and time to do good work that helps our customers.
 ```python
 from pathlib import Path
 import pytest
-from bullfighter.report import score
+from muleta.report import score
 
 SAMPLES = Path(__file__).parent / "samples"
 
@@ -1096,8 +1105,8 @@ def test_scores_stable(name):
 
 - [ ] **Step 3: Compute the real values**
 
-Run: `.venv/Scripts/bullfighter score tests/golden/samples/jargon_heavy.txt --json`
-Run: `.venv/Scripts/bullfighter score tests/golden/samples/clean.txt --json`
+Run: `.venv/Scripts/muleta score tests/golden/samples/jargon_heavy.txt --json`
+Run: `.venv/Scripts/muleta score tests/golden/samples/clean.txt --json`
 Record `composite` and `bull_index` for each.
 
 - [ ] **Step 4: Replace the `None`s with the recorded literals, then run**
@@ -1151,7 +1160,7 @@ print a clear message and exit 0 — the seed corpus stands.
 
 - [ ] **Step 5: Merge recovered terms (human-reviewed)**
 
-For each accepted term, `bullfighter corpus add` isn't in the lean CLI, so use the
+For each accepted term, `muleta corpus add` isn't in the lean CLI, so use the
 MCP `corpus_add` tool or hand-edit `data/jargon.yaml`; bump `version` to `0.2.0`
 and add a `CHANGELOG.md` entry citing the extraction source. Re-run the suite;
 update golden literals in the same commit if scores shift.
@@ -1236,5 +1245,5 @@ consistent across Tasks 3–13. ✅
   client's own model does this.
 - **`corpus suggest` MCP tool:** propose candidate bullwords from a document into a
   human-approved queue (`source: llm-suggested`), never auto-committed.
-- **`/bullfighter` Claude Code skill:** thin wrapper over the MCP server.
+- **`/muleta` Claude Code skill:** thin wrapper over the MCP server.
 - **`.pptx` parsing** and richer offset highlighting.
