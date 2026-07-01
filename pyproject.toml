@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "muleta"
+version = "0.1.0"
+description = "Muleta: revival of Deloitte's Bullfighter as an MCP server — jargon detection + readability scoring."
+requires-python = ">=3.11"
+dependencies = ["mcp>=1.10", "pyyaml>=6", "python-docx>=1.1", "click>=8.1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "anyio>=4", "ruff>=0.5"]
+
+[project.scripts]
+muleta = "muleta.cli:main"
+muleta-mcp = "muleta.mcp_server:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+muleta = []
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

@@ -1,0 +1,24 @@
+version: "0.1.0"
+entries:
+  - term: leverage
+    severity: 5
+    source: reconstructed
+    added: "2026-07-01"
+    notes: "Most-cited Bullfighter offender."
+  - term: bandwidth
+    severity: 5
+    source: reconstructed
+    added: "2026-07-01"
+    notes: "Second most-cited offender."
+  - term: synergy
+    severity: 4
+    source: reconstructed
+    added: "2026-07-01"
+  - term: robust
+    severity: 3
+    source: reconstructed
+    added: "2026-07-01"
+  - term: value-added
+    severity: 4
+    source: reconstructed
+    added: "2026-07-01"
