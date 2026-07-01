@@ -77,11 +77,13 @@ bullfighter/                     public repo; local copy off the cloud mount
 │   ├─ flesch.py                 Flesch Reading Ease
 │   ├─ bull_index.py             jargon matching + severity scoring
 │   ├─ composite.py              Bull Composite (1–10)
+│   ├─ corpus.py                 load / validate / version / mutate the dictionary
 │   └─ report.py                 structured result: scores + hit list w/ offsets
 ├─ data/
-│   └─ jargon.yaml               LAYER 2 — versioned dictionary (word, severity,
-│                                source, notes); the archival record
-├─ cli/                          LAYER 3 — `bullfighter score|dejargon|extract`
+│   ├─ jargon.yaml               LAYER 2 — versioned dictionary (word, severity,
+│   │                            source, notes, added); the archival record
+│   └─ CHANGELOG.md              human-readable corpus change history
+├─ cli/                          LAYER 3 — `bullfighter score|dejargon|extract|corpus`
 ├─ llm/                          LAYER 4 — provider-agnostic; Anthropic default
 │   ├─ client.py                 thin provider abstraction (Claude default)
 │   ├─ explain.py                why each hit is jargon, in context
@@ -112,6 +114,42 @@ repo under e.g. `skill/`), installed into the user's ecosystem separately.
 - **MCP** (layer 5): transport wrapper exposing engine + LLM functions as tools.
 - **Skill** (layer 6): ergonomics wrapper for the user's Claude Code ecosystem.
 
+## 6a. Corpus Management (updatable dictionary)
+
+The jargon corpus is a **living, versioned dataset**, not a frozen constant.
+This mirrors the original tool's origin (a list distilled from thousands of
+real submissions) and is a first-class capability, not an afterthought.
+
+**Entry schema (`jargon.yaml`):** each term carries
+`term`, `severity` (1–5), `source` (`extracted` | `reconstructed` |
+`user` | `llm-suggested`), `added` (date), optional `aliases`/morphology hints,
+and `notes`. Schema is validated on every load and in CI.
+
+**Corpus versioning.** The corpus has its own semantic version and a
+`CHANGELOG.md`. Every scoring `Report` records the `corpus_version` used, so a
+score is always reproducible and golden-file tests pin an exact version. Bumping
+the corpus is a deliberate, logged act — scores never shift silently.
+
+**Update paths (all human-in-the-loop for anything automated):**
+
+- `bullfighter corpus list | show <term>` — inspect.
+- `bullfighter corpus add|edit|remove <term> [--severity N] [--note ...]` —
+  manual curation; writes the entry with provenance and appends to the
+  changelog.
+- `bullfighter corpus import <file>` — merge an external word list, with a
+  conflict/dedup pass and a diff preview before commit.
+- `bullfighter corpus suggest <document|url>` — the LLM layer proposes candidate
+  bullwords (fed by `context_scan`, which already surfaces jargon the fixed list
+  misses); suggestions land in a review queue tagged `source: llm-suggested`
+  and are **never** auto-committed — a human approves each before it enters the
+  scored corpus.
+- `bullfighter corpus validate` — schema + integrity check (unique terms, valid
+  severity, provenance present); runs in CI.
+
+**Design consequence:** because scores are corpus-versioned, updating the corpus
+is safe and auditable — anyone can see what changed, when, from what source, and
+which score version it affects.
+
 ## 7. Data Flow
 
 ```
@@ -120,7 +158,8 @@ text | .docx | .pptx
         ▼
    ┌─────────┐      Report {
    │ ENGINE  │ ──▶    bull_index, flesch, composite (1–10),
-   └─────────┘        hits: [{term, severity, start, end}], stats
+   └─────────┘        hits: [{term, severity, start, end}], stats,
+                      corpus_version   (score is always reproducible)
         │
         ├── CLI prints Report (human / JSON)
         ├── MCP returns Report as JSON tool result
