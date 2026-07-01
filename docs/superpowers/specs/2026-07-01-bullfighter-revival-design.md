@@ -43,6 +43,16 @@ improvement. Scoring works with no LLM at all; the LLM is strictly additive.
 
 Deterministic engine as ground truth **+** an LLM layer on top. Not either/or.
 
+**Primary delivery surface: an MCP server (decided 2026-07-01).** "Revive the
+functions for LLMs" is fulfilled by exposing the engine as MCP tools, so any MCP
+client (Claude Desktop, Claude Code, etc.) can call `score_text`, `find_jargon`,
+and corpus tools directly. Crucially, **the client's own model acts as the LLM
+layer** — it explains and rewrites grounded on the deterministic scores the tools
+return, so a separate self-hosted LLM-API layer (former Layer 4) is no longer on
+the v1 critical path; it becomes an optional convenience for non-MCP callers. The
+CLI is retained as a thin local dev/testing tool (and to generate golden score
+values), not the headline interface.
+
 ## 4. Fidelity Strategy (decided: best-effort extraction, graceful fallback)
 
 Two elements are reverse-engineered from the artifact, each with a documented
