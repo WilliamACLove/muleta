@@ -1,24 +1,459 @@
-version: "0.1.0"
+# Muleta jargon corpus — authentic Bullfighter dictionary (113 headwords).
+# Recovered from the shipped Bullfighter 1.2 installer (Wayback Machine). Words are
+# individually uncopyrightable (37 CFR 202.1; Feist); independently compiled here with
+# our own tiered weights. See PROVENANCE.md and docs/recovery-notes.md.
+# weight = Bull weight Bi, 1 (abused real word) .. 10 (worst coinage).
+version: "1.0.0"
 entries:
-  - term: leverage
-    severity: 5
-    source: reconstructed
+  - term: accelerator
+    weight: 3
+    source: extracted
     added: "2026-07-01"
-    notes: "Most-cited Bullfighter offender."
+  - term: action item
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: agile
+    weight: 2
+    source: extracted
+    added: "2026-07-01"
+  - term: align
+    weight: 2
+    source: extracted
+    added: "2026-07-01"
+  - term: alignment
+    weight: 2
+    source: extracted
+    added: "2026-07-01"
+  - term: architect
+    weight: 2
+    source: extracted
+    added: "2026-07-01"
   - term: bandwidth
-    severity: 5
-    source: reconstructed
+    weight: 8
+    source: extracted
     added: "2026-07-01"
-    notes: "Second most-cited offender."
+  - term: benchmark
+    weight: 2
+    source: extracted
+    added: "2026-07-01"
+  - term: best in class
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: best of breed
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: best practice
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: bleeding edge
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: bricks and clicks
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: buy-in
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: capability transfer
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: center of excellence
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: change agent
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: clicks and mortar
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: client focus
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: close the loop
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: core competency
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: critical path
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: cutting edge
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: deliverable
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: disintermediate
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: drill down
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: drink from a fire hydrant
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: e-business
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: ecosystem
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: empower
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: end to end
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: enterprise
+    weight: 2
+    source: extracted
+    added: "2026-07-01"
+  - term: envisioneer
+    weight: 10
+    source: extracted
+    added: "2026-07-01"
+  - term: fast track
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: fire on all cylinders
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: first-mover
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: full plate
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: future proof
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: game plan
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: global
+    weight: 1
+    source: extracted
+    added: "2026-07-01"
+  - term: going forward
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: granular
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: guesstimate
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: holistic
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: incentivise
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: incentivize
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: infomediary
+    weight: 10
+    source: extracted
+    added: "2026-07-01"
+  - term: inoculate
+    weight: 5
+    source: extracted
+    added: "2026-07-01"
+  - term: knowledge base
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: knowledge capital
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: leading edge
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: leverage
+    weight: 8
+    source: extracted
+    added: "2026-07-01"
+  - term: low-hanging fruit
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: mindshare
+    weight: 8
+    source: extracted
+    added: "2026-07-01"
+  - term: mission-critical
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: monetise
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: monetize
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: non value-add
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: octel
+    weight: 10
+    source: extracted
+    added: "2026-07-01"
+  - term: offline
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: offload
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: operationalise
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: operationalize
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: out of pocket
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: out of the box
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: out of the loop
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: paradigm
+    weight: 8
+    source: extracted
+    added: "2026-07-01"
+  - term: paradigm shift
+    weight: 8
+    source: extracted
+    added: "2026-07-01"
+  - term: parking lot
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: phase contain
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: ping
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: productise
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: productize
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: pure play
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: quality-driven
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: radar
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: reach out
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: reengineer
+    weight: 8
+    source: extracted
+    added: "2026-07-01"
+  - term: reinvent the wheel
+    weight: 8
+    source: extracted
+    added: "2026-07-01"
+  - term: repository
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: repurpose
+    weight: 8
+    source: extracted
+    added: "2026-07-01"
+  - term: scalable
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: seamless
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: shelfware
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: socialise
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: socialize
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: soup to nuts
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: stakeholder
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: strategise
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: strategize
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: straw man
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: synch-up
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: synergistic
+    weight: 8
+    source: extracted
+    added: "2026-07-01"
+  - term: synergize
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
   - term: synergy
-    severity: 4
-    source: reconstructed
+    weight: 8
+    source: extracted
     added: "2026-07-01"
-  - term: robust
-    severity: 3
-    source: reconstructed
+  - term: thought leader
+    weight: 7
+    source: extracted
     added: "2026-07-01"
-  - term: value-added
-    severity: 4
-    source: reconstructed
+  - term: thoughtware
+    weight: 10
+    source: extracted
+    added: "2026-07-01"
+  - term: touch base
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: touch point
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: transformation
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: transparent
+    weight: 3
+    source: extracted
+    added: "2026-07-01"
+  - term: unleash
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: utilise
+    weight: 5
+    source: extracted
+    added: "2026-07-01"
+  - term: utilize
+    weight: 5
+    source: extracted
+    added: "2026-07-01"
+  - term: value add
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: value proposition
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: value-capturing
+    weight: 9
+    source: extracted
+    added: "2026-07-01"
+  - term: vortal
+    weight: 10
+    source: extracted
+    added: "2026-07-01"
+  - term: walk the talk
+    weight: 7
+    source: extracted
+    added: "2026-07-01"
+  - term: walk the walk
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: whiteboard
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: wordsmith
+    weight: 6
+    source: extracted
+    added: "2026-07-01"
+  - term: world class
+    weight: 6
+    source: extracted
     added: "2026-07-01"

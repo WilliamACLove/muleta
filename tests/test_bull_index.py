@@ -1,27 +1,42 @@
 import pytest
 
-from muleta.bull_index import bull_index, find_hits
+from muleta.bull_index import bull_scores, find_hits, weight_factor
 from muleta.corpus import Corpus
 
 C = Corpus.load()
 
 
+def test_weight_factor_thresholds():
+    assert weight_factor(5) == 2
+    assert weight_factor(1500) == 3
+    assert weight_factor(20000) == 4
+    assert weight_factor(60000) == 5
+
+
 def test_find_hits_terms_and_offsets():
     hits = find_hits("We must leverage synergy now.", C)
-    terms = [(h.term, h.severity) for h in hits]
-    assert ("leverage", 5) in terms and ("synergy", 4) in terms
+    terms = {h.term for h in hits}
+    assert "leverage" in terms and "synergy" in terms
     lev = next(h for h in hits if h.term == "leverage")
     assert "We must leverage synergy now."[lev.start:lev.end].lower() == "leverage"
 
 
-def test_find_hits_word_bounded():
-    assert len(find_hits("Leverage the leverages.", C)) == 1
+def test_find_hits_matches_inflections_and_hyphen_variants():
+    assert any(h.term == "leverage" for h in find_hits("We leveraged it.", C))
+    assert any(h.term == "value add" for h in find_hits("a value-added result", C))
 
 
-def test_bull_index_zero_when_clean():
-    assert bull_index("plain honest words here", C) == 0.0
+def test_bull_scores_formula():
+    # "leverage now": N=2 -> F=2; leverage weight 8, Ci=1, Wi=min(1/2,1)=0.5
+    # penalty = 8*0.5 = 4; BIr = 96; BI = 9.6
+    bir, bi, f, hits = bull_scores("leverage now", C)
+    assert f == 2
+    assert bir == pytest.approx(96.0)
+    assert bi == pytest.approx(9.6)
 
 
-def test_bull_index_weighted_density():
-    # "leverage" sev 5 in 2 words -> 1000 * 5 / 2 = 2500.0
-    assert bull_index("leverage now", C) == pytest.approx(2500.0)
+def test_bull_scores_clean_text():
+    bir, bi, f, hits = bull_scores("we write plainly and clearly for our readers", C)
+    assert bir == pytest.approx(100.0)
+    assert bi == pytest.approx(10.0)
+    assert hits == []

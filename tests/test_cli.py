@@ -13,7 +13,8 @@ def test_score_text_json():
 
 def test_score_text_human():
     res = CliRunner().invoke(main, ["score", "--text", "We must leverage synergy."])
-    assert res.exit_code == 0 and "Bull Composite" in res.output and "leverage" in res.output
+    assert res.exit_code == 0
+    assert "Bull Composite Index" in res.output and "leverage" in res.output
 
 
 def test_corpus_list():

@@ -20,14 +20,15 @@ def _get_text(path, text):
 
 def _render(r):
     lines = [
-        f"Bull Composite: {r.composite}/10   (10 = clearest)",
-        f"Flesch Reading Ease: {r.flesch}",
-        f"Bull Index: {r.bull_index}   words: {r.word_count}",
+        f"Bull Composite Index: {r.composite}/10   (10 = clearest)",
+        f"Bull Index: {r.bull_index}/10   (raw {r.bull_index_raw}/100; aim 90+)",
+        f"Flesch Reading Ease: {r.flesch}   (adjusted {r.flesch_adjusted}/10)",
+        f"words: {r.word_count}   weight factor F: {r.weight_factor}",
         f"corpus {r.corpus_version} / formula {r.formula_version}",
     ]
     if r.hits:
         lines.append("Jargon:")
-        lines += [f"  - {h.term} (severity {h.severity}) @ {h.start}" for h in r.hits]
+        lines += [f"  - {h.term} (weight {h.weight}) @ {h.start}" for h in r.hits]
     else:
         lines.append("No jargon found.")
     return "\n".join(lines)
@@ -35,7 +36,7 @@ def _render(r):
 
 @click.group()
 def main():
-    """Muleta: detect jargon, score clarity."""
+    """Muleta: detect jargon, score clarity (authentic Bullfighter scoring)."""
 
 
 @main.command()
@@ -56,4 +57,4 @@ def corpus():
 @corpus.command("list")
 def corpus_list():
     for e in Corpus.load().entries():
-        click.echo(f"{e.term}\tsev {e.severity}\t{e.source}")
+        click.echo(f"{e.term}\tweight {e.weight}\t{e.source}")

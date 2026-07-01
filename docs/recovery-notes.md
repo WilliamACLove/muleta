@@ -1,48 +1,53 @@
-# Installer Recovery Notes
+# Installer Recovery Notes — SUCCESS
 
-Running log of attempts to recover the original Bullfighter dictionary and formula
-constants from `bullfighter.exe` (a Wise Installation Wizard package). See
-`tools/extract_installer.py`.
+The original Bullfighter dictionary and scoring formula were **successfully recovered**
+from primary sources. Muleta ships as a faithful restoration, not a reconstruction.
 
-## Artifact identity
+## What was recovered
 
-- `bullfighter.exe` / `bullfighter.zip` (identical payload, ~1.16 MB) — Wise
-  installer. String markers: `WiseMain`, `Bullfighter 1.2 Installation`,
-  `Initializing Wise Installation Wizard...`, `Could not extract Wise0132.dll`.
+1. **The dictionary (113 headwords)** — pulled from the shipped program's own Microsoft
+   Access database, embedded inside the installer.
+2. **The scoring formula** — Bull Index, Adjusted Flesch, and Bull Composite Index,
+   transcribed verbatim from the vendor's scorecard page. Implemented as `bfc-v2`.
 
-## Attempts (2026-07-01)
+## How (the working method)
 
-- **7-Zip (26.02) extraction:** FAILED — `Cannot open the file as archive`. Wise
-  SFX is not a standard archive format 7-Zip can unpack.
-- **Cleartext string scan for the dictionary:** NEGATIVE. 36,315 printable strings
-  in the binary; probed for ~28 known bullwords/business-jargon terms (leverage,
-  synergy, bandwidth, robust, paradigm, incentivize, value-added, …) — **zero
-  matches**. The dictionary payload is compressed inside the Wise container, so it
-  is not statically visible.
-- **Formula constants (Flesch coefficients / severity tables):** not attempted —
-  same compression barrier.
+- The installer (`bullfighter.exe`, Wise Installation Wizard, Business Idiots LLC for
+  Deloitte Consulting) was fetched from the Wayback Machine:
+  `http://web.archive.org/web/20051214215751id_/http://www.fightthebull.com/bullfighter/bullfighter.zip`
+- The Wise payload is a sequence of **raw DEFLATE streams** (zlib `decompressobj(-15)`,
+  offset scan). Carving yielded ~24 streams: several nested PE files (the add-in DLLs)
+  plus **one `Standard Jet DB` (.mdb)** holding the dictionary.
+- The `.mdb` is **password-protected** (ACE OLEDB rejects it), but Jet stores text as
+  **UTF-16LE**, so the bullwords, replacements, and jokey comments are directly readable.
+  DB schema: `bullword`, `ownerword` (variant), `weight` (1–10), `suggestions`,
+  `comments`, `score`, `type`, `diagnosis`, `codename`.
 
-## Conclusion
+> A first local attempt (this repo, `tools/extract_installer.py` against the local
+> Downloads copy) failed because it used 7-Zip (which cannot open Wise SFX) and a
+> coarse boundary sweep that missed the raw-deflate streams. The successful method above
+> is the raw-deflate offset carve on the Wayback copy.
 
-Static recovery of the original ~350-word dictionary is **not possible** from the
-installer without executing it. The word list lives inside the compressed Wise
-payload (the installed Word/PowerPoint add-in DLL), not in cleartext.
+## Formula (recovered verbatim → implemented as bfc-v2)
 
-**The only remaining route** is to run the 2004 installer in a disposable/VM
-environment, let it drop the add-in, and inspect the installed DLL's resources for
-the embedded dictionary and scoring constants. This is deferred to a deliberate,
-user-initiated step — running a legacy unknown executable is a decision for the
-repo owner, ideally inside a sandbox/VM.
+- **F (weight factor):** 2 if N<1000; 3 if 1000≤N<10000; 4 if 10000≤N<50000; 5 if N≥50000.
+- **Bull Index:** Wᵢ = min(Cᵢ/F, 1); BIr = 100 − Σ(Bᵢ·Wᵢ); BI = 0 if BIr<0 else BIr/10.
+- **Adjusted Flesch:** F = 206.835 − (1.015·S + 84.6·L); AF = CDF(F, μ=40, σ=25),
+  scaled ×10 to share the 0–10 range (our documented interpretation for composite math).
+- **Bull Composite:** Pb=(15−√BI)/(30−√BI−√AF), Pf symmetric; BCI = Pb·BI + Pf·AF.
+  The worse of the two components is weighted more heavily.
 
-## Fallback in effect
+Source: `http://web.archive.org/web/20090625004413/http://www.fightthebull.com:80/bullscorecard.asp`
 
-Per the design's graceful-fallback strategy, the **reconstructed seed corpus**
-(`data/jargon.yaml`, all entries `source: reconstructed`) stands as the shipped
-dictionary, and the transparent `bfc-v1` formula is used. If the DLL is later
-recovered, extracted terms merge in via human review, tagged `source: extracted`,
-bumping the corpus to `0.2.0` with a `CHANGELOG.md` entry — and golden score
-literals are updated in the same commit if they shift.
+## Open follow-ups
 
-`tools/extract_installer.py` remains as a re-runnable harness: if 7-Zip ever gains
-Wise support or the add-in DLL is provided directly, point the tool at it to
-auto-harvest candidate terms into `data/recovered_terms.yaml` for review.
+- **Exact per-word weights** and **clean replacement suggestions** require reading the
+  `.mdb` proper (Jet, password-handled — e.g., mdbtools). Current weights are tier-assigned
+  (anchored to the confirmed global=1 / leverage=high / envisioneer=10) and replacements
+  are omitted rather than shipped corrupted.
+
+## What is NOT redistributed
+
+The proprietary installer and `.mdb` are **not** committed to this public repo. Only the
+individual words (uncopyrightable) are used, in an independently compiled corpus with
+provenance cited. See `PROVENANCE.md`.

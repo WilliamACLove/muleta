@@ -2,19 +2,21 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 
-from muleta.bull_index import Hit, bull_index as _bull_index, find_hits
+from muleta.bull_index import Hit, bull_scores
 from muleta.composite import FORMULA_VERSION, bull_composite
 from muleta.corpus import Corpus
-from muleta.flesch import flesch_reading_ease
-from muleta.text import words
+from muleta.flesch import adjusted_flesch, flesch_reading_ease
 
 
 @dataclass(frozen=True)
 class Report:
-    composite: float
-    bull_index: float
-    flesch: float
+    composite: float  # Bull Composite Index (BCI), 0..10, 10 = clearest
+    bull_index: float  # BI, 0..10
+    bull_index_raw: float  # BIr, 0..100 (the vendor's displayed jargon score)
+    flesch: float  # raw Flesch Reading Ease
+    flesch_adjusted: float  # AF, 0..10 (educated-readership adjusted)
     word_count: int
+    weight_factor: int  # F, the length-based bull weight factor
     hits: list[Hit]
     corpus_version: str
     formula_version: str
@@ -27,14 +29,20 @@ class Report:
 
 def score(text: str, corpus: Corpus | None = None) -> Report:
     c = corpus or Corpus.load()
-    flesch = flesch_reading_ease(text)
-    bi = _bull_index(text, c)
+    bir, bi, f, hits = bull_scores(text, c)
+    raw_flesch = flesch_reading_ease(text)
+    af = adjusted_flesch(raw_flesch)
+    from muleta.text import words
+
     return Report(
-        composite=bull_composite(flesch, bi),
+        composite=bull_composite(bi, af),
         bull_index=bi,
-        flesch=flesch,
+        bull_index_raw=bir,
+        flesch=raw_flesch,
+        flesch_adjusted=af,
         word_count=len(words(text)),
-        hits=find_hits(text, c),
+        weight_factor=f,
+        hits=hits,
         corpus_version=c.version,
         formula_version=FORMULA_VERSION,
     )

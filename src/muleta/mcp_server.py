@@ -16,19 +16,20 @@ CORPUS_PATH: Path = _DEFAULT_PATH
 
 @mcp.tool()
 def score_text(text: str) -> dict:
-    """Score text for jargon and readability. Returns Bull Composite (1-10, 10=clearest),
-    Bull Index, Flesch Reading Ease, word count, jargon hits with offsets, and versions."""
+    """Score text with the authentic Bullfighter formula (bfc-v2). Returns the Bull
+    Composite Index (0-10, 10=clearest), Bull Index (BI and raw BIr), raw + adjusted
+    Flesch, word count, weight factor, jargon hits (term, weight, offsets), and versions."""
     return _score(text, Corpus.load(CORPUS_PATH)).to_dict()
 
 
 @mcp.tool()
 def find_jargon(text: str) -> dict:
-    """List jargon terms found in the text, with severity and character offsets."""
+    """List jargon terms found in the text, with Bull weight (1-10) and character offsets."""
     r = _score(text, Corpus.load(CORPUS_PATH))
     return {
         "count": len(r.hits),
         "hits": [
-            {"term": h.term, "severity": h.severity, "start": h.start, "end": h.end}
+            {"term": h.term, "weight": h.weight, "start": h.start, "end": h.end}
             for h in r.hits
         ],
         "corpus_version": r.corpus_version,
@@ -37,23 +38,25 @@ def find_jargon(text: str) -> dict:
 
 @mcp.tool()
 def corpus_list() -> dict:
-    """List all jargon terms in the corpus with severity and provenance."""
+    """List all jargon terms in the corpus with Bull weight (1-10) and provenance."""
     c = Corpus.load(CORPUS_PATH)
     return {
         "version": c.version,
+        "count": len(c.entries()),
         "entries": [
-            {"term": e.term, "severity": e.severity, "source": e.source} for e in c.entries()
+            {"term": e.term, "weight": e.weight, "source": e.source} for e in c.entries()
         ],
     }
 
 
 @mcp.tool()
-def corpus_add(term: str, severity: int, source: str = "user", note: str = "") -> dict:
-    """Add a jargon term to the corpus (persisted). severity 1-5; source defaults to 'user'."""
+def corpus_add(term: str, weight: int, source: str = "user", note: str = "") -> dict:
+    """Add a jargon term to the corpus (persisted). weight 1-10 (1=abused real word,
+    10=worst coinage); source defaults to 'user'."""
     c = Corpus.load(CORPUS_PATH)
-    c.add(term, severity=severity, source=source, added=_dt.date.today().isoformat(), note=note)
+    c.add(term, weight=weight, source=source, added=_dt.date.today().isoformat(), note=note)
     c.save(CORPUS_PATH)
-    return {"ok": True, "term": term, "severity": severity, "source": source}
+    return {"ok": True, "term": term, "weight": weight, "source": source}
 
 
 def run() -> None:
